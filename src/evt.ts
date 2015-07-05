@@ -72,6 +72,9 @@ module EVT {
 			return null;
 		}
 		
+		/**
+		 * Disposes all resources.
+		 */
 		public Dispose() {
 			
 		}

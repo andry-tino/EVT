@@ -3,12 +3,17 @@
  * File: DataHandler.ts
  */
 
+/// <reference path="../EventData.ts"/>
+
 module EVT {
 	/**
 	 * Interface defining behavior for all classes acting as data handlers.
 	 */
 	export interface DataHandler {
-		b: Date;
+		/**
+		 * Gets the event data.
+		 */
+		Data: EventData;
 	}
 }
 

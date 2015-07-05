@@ -31,6 +31,7 @@ animdata.tooltip = function() {
         f[1] > .5 * screen.height && (h -= 110), c.tooltip.style("left", g + "px").style("top", h + "px"), c.tooltip.select(".driver").text(d.driver), c.tooltip.select(".date").text(d.date), c.tooltip.select(".race").text(d.race), c.tooltip.select(".position").text(1 === d.position ? "Winner" : 0 === d.position ? "DNF" : a(d.position))
     }, b
 }();
+
 var animdata = animdata || {};
 animdata.log = function() {
     var a, b = {};
@@ -85,6 +86,7 @@ animdata.scroll = function() {
     };
     return a
 }();
+
 var animdata = animdata || {};
 animdata.chart = function() {
     function a(a, b) {
@@ -230,6 +232,7 @@ animdata.chart = function() {
         o.drivers.classed("fade", null !== a).classed("highlight", !1), o.xAxis.classed("fade", !1), null !== a && (o.chartContainer.select("#" + a).classed("fade", !1).classed("highlight", !0), o.xAxis.classed("fade", !0))
     }, k
 }();
+
 var animdata = animdata || {};
 animdata.data = function() {
     function a() {
@@ -263,6 +266,7 @@ animdata.data = function() {
         })
     }, b
 }();
+
 var animdata = animdata || {};
 animdata.menu = function() {
     var a = {}, b = {
@@ -295,6 +299,7 @@ animdata.menu = function() {
         b.menu.selectAll("select").attr("disabled", a ? null : "disabled"), b.menu.selectAll("input").attr("disabled", a ? null : "disabled"), b.menu.style("opacity", a ? 1 : .3)
     }, a
 }();
+
 var animdata = animdata || {};
 animdata.story = function() {
     function a() {
@@ -387,6 +392,7 @@ animdata.story = function() {
         g.container.transition().style("opacity", 0), animdata.log.write("about to scroll"), a > 0 ? animdata.controller.scrollTo(b.scrollTo, d) : animdata.controller.moveTo(0, 0, d), animdata.log.write("done scroll"), f.uiState.xType !== b.xType && (e.controller.selectMode(b.xType), f.uiState.xType = b.xType), animdata.log.write("end updating story")
     }, f
 }();
+
 var animdata = animdata || {};
 animdata.controller = function() {
     function a(a) {
