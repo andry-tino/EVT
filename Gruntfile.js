@@ -3,6 +3,13 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     
+    // Shell commands
+    shell: {
+      tsCompile: {
+        command: "ts <%= pkg.src %>"
+      }
+    },
+    
     // Uglify
     uglify: {
       options: {
@@ -19,5 +26,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   // Default task(s).
-  grunt.registerTask('default', ['uglify']);
+  grunt.registerTask('default', [
+    'shell:tsCompile', 
+    'uglify'
+  ]);
 };
