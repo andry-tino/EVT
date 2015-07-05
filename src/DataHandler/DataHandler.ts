@@ -13,7 +13,7 @@ module EVT {
 		/**
 		 * Gets the event data.
 		 */
-		Data: EventData;
+		data: EventData;
 	}
 }
 

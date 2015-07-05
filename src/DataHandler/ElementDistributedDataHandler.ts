@@ -5,15 +5,13 @@
  
 /// <reference path="DataHandler.ts"/>
 /// <reference path="../Disposable.ts"/>
-/// <reference path="HTMLElement.ts"/>
+/// <reference path="../HTMLElement.ts"/>
 
 module EVT {
 	/**
 	 * Class implementing a depth first element providing strategy.
 	 */
 	export class ElementDistributedDataHandler implements DataHandler, Disposable {
-		private static DATAHANDLER_NAME: string = "__evt_datahandler";
-		
 		private element: HTMLElement;
 		
 		/**
@@ -28,24 +26,24 @@ module EVT {
 			this.element = element;
 			this.element.evtData = {};
 			
-			this.InitializeElement();
+			this.initializeElement();
 		}
 		
 		/**
 		 * Gets data.
 		 */
-		public get Data(): EventData {
+		public get data(): EventData {
 			return null;
 		}
 		
 		/**
 		 * Disposes data connected to element.
 		 */
-		public Dispose() {
+		public dispose() {
 			
 		}
 		
-		private InitializeElement() {
+		private initializeElement() {
 			
 		}
 	}

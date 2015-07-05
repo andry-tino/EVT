@@ -3,6 +3,8 @@
  * File: ElementProvider.ts
  */
 
+/// <reference path="../HTMLElement.ts"/>
+
 module EVT {
 	/**
 	 * Interface defining behavior for all classes acting as element providers.
@@ -11,16 +13,16 @@ module EVT {
 		/**
 		 * Gets the element in the iterative sequence.
 		 */
-		Element: Element;
+		element: HTMLElement;
 		
 		/**
 		 * Gets a value indicating whether the current element is the first.
 		 */
-		IsFirst: boolean;
+		isFirst: boolean;
 		
 		/**
 		 * Gets a value indicating whether the current element is the last.
 		 */
-		IsLast: boolean;
+		isLast: boolean;
 	}
 }

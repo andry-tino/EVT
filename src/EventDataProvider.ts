@@ -13,6 +13,6 @@ module EVT {
 		/**
 		 * Provides event data.
 		 */
-		EventData(): EventData;
+		eventData(): EventData;
 	}
 }

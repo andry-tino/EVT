@@ -30,28 +30,28 @@ module EVT {
 		/**
 		 * Gets the element in the iterative sequence.
 		 */
-		public get Element(): Element {
+		public get element(): HTMLElement {
 			return this.sequence[this.cursor++ % this.sequence.length];
 		}
 		
 		/**
 		 * Gets a value indicating whether the current element is the first.
 		 */
-		public get IsFirst(): boolean {
+		public get isFirst(): boolean {
 			return this.cursor == 0;
 		}
 		
 		/**
 		 * Gets a value indicating whether the current element is the last.
 		 */
-		public get IsLast(): boolean {
+		public get isLast(): boolean {
 			return this.cursor == this.sequence.length - 1;
 		}
 		
 		/**
 		 * Disposes the object.
 		 */
-		public Dispose() {
+		public dispose() {
 			this.sequence = null;
 		}
 		

@@ -16,9 +16,6 @@ module EVT {
 	export class Evt implements EventDataProvider, Disposable {
 		private root: Element;
 		
-		private elementProvider: ElementProvider;
-		private dataHandler: DataHandler;
-		
 		/**
 		 * Constructs a new instance of the Evt class.
 		 * root: The element from which starting everything.
@@ -28,55 +25,40 @@ module EVT {
 				throw new Error("root cannot be null!");
 			}
 			
-			this.elementProvider = null;
-			this.dataHandler = null;
-			
 			this.root = root;
+			
+			this.initialize();
 		}
 		
-		/** Gets the ElementProvider */
-		public get ElementProvider(): ElementProvider {
-			if (!this.elementProvider) {
-				// TODO: Create
-			}
-			return this.elementProvider;
-		}
+		/** Gets or sets the element provider. */
+		public elementProvider: ElementProvider;
 		
-		/** Sets the ElementProvider */
-		public set ElementProvider(value: ElementProvider) {
-			this.elementProvider = value;
-		}
+		/** Gets or sets the data handler. */
+		public dataHandler: DataHandler;
 		
-		/** Gets the DataHandler */
-		public get DataHandler(): DataHandler {
-			if (!this.dataHandler) {
-				// TODO: Create
-			}
-			return this.dataHandler;
-		}
-		
-		/** Sets the DataHandler */
-		public set DataHandler(value: DataHandler) {
-			this.dataHandler = value;
-		}
-		
-		public Start() {
+		public start() {
 			// TODO: Implement
 		}
 		
-		public Stop() {
+		public stop() {
 			
 		}
 		
-		public EventData(): EventData {
+		public eventData(): EventData {
 			return null;
 		}
 		
 		/**
 		 * Disposes all resources.
 		 */
-		public Dispose() {
+		public dispose() {
 			
+		}
+		
+		private initialize() {
+			// Providing default values
+			this.elementProvider = null;
+			this.dataHandler = null;
 		}
 	}
 }
