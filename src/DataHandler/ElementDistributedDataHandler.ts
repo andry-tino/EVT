@@ -5,6 +5,7 @@
  
 /// <reference path="DataHandler.ts"/>
 /// <reference path="../Disposable.ts"/>
+/// <reference path="HTMLElement.ts"/>
 
 module EVT {
 	/**
@@ -13,19 +14,21 @@ module EVT {
 	export class ElementDistributedDataHandler implements DataHandler, Disposable {
 		private static DATAHANDLER_NAME: string = "__evt_datahandler";
 		
-		private element: Element;
+		private element: HTMLElement;
 		
 		/**
 		 * Constructs a new instance of the class.
 		 * element: The start element from which creating the sequence.
 		 */
-		constructor(element: Element) {
+		constructor(element: HTMLElement) {
 			if (!element) {
 				throw new Error("Need an element!");
 			}
 			
 			this.element = element;
-			this.element.appendChild();
+			this.element.evtData = {};
+			
+			this.InitializeElement();
 		}
 		
 		/**
@@ -39,6 +42,10 @@ module EVT {
 		 * Disposes data connected to element.
 		 */
 		public Dispose() {
+			
+		}
+		
+		private InitializeElement() {
 			
 		}
 	}
