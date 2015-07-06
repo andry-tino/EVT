@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     // Shell commands
     shell: {
       tsCompile: {
-        command: "ts <%= pkg.src %>"
+        command: "tsc src/evt.ts --out out/<%= pkg.name %>.js --target ES5"
       }
     },
     
@@ -16,18 +16,16 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src: 'src/<%= pkg.name %>.js',
+        src: 'out/<%= pkg.name %>.js',
         dest: 'out/<%= pkg.name %>.min.js'
       }
     }
   });
 
-  // Load the plugin that provides the "uglify" task.
+  // Loading packages
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-shell');
 
-  // Default task(s).
-  grunt.registerTask('default', [
-    'shell:tsCompile', 
-    'uglify'
-  ]);
+  // Default task(s): build and minify
+  grunt.registerTask('default', ['shell:tsCompile', 'uglify']);
 };
