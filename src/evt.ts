@@ -3,18 +3,24 @@
  * File: evt.ts
  */
 
-/// <reference path="ElementProvider/ElementProvider.ts"/>
-/// <reference path="DataHandler/DataHandler.ts"/>
-/// <reference path="EventDataProvider.ts"/>
-/// <reference path="Disposable.ts"/>
+/// <reference path="ElementProvider/elementProvider.ts"/>
+/// <reference path="eventCollector.ts"/>
+/// <reference path="Data/elementInSituEventDataProvider.ts"/>
+/// <reference path="disposable.ts"/>
 
 module EVT {
 	/**
 	 * Class implementing all features by EVT and functrionalities
 	 * to track events and export collected results.
 	 */
-	export class Evt implements EventDataProvider, Disposable {
+	export class Evt implements EventCollector, Disposable {
 		private root: Element;
+		
+		/** Gets or sets the element provider. */
+		public elementProvider: ElementProvider;
+		
+		/** Gets or sets the data handler. */
+		public eventDataProvider: EventDataProvider;
 		
 		/**
 		 * Constructs a new instance of the Evt class.
@@ -30,17 +36,15 @@ module EVT {
 			this.initialize();
 		}
 		
-		/** Gets or sets the element provider. */
-		public elementProvider: ElementProvider;
-		
-		/** Gets or sets the data handler. */
-		public dataHandler: DataHandler;
-		
 		public start() {
 			// TODO: Implement
 		}
 		
 		public stop() {
+			
+		}
+		
+		public collect(): any {
 			
 		}
 		
@@ -58,7 +62,7 @@ module EVT {
 		private initialize() {
 			// Providing default values
 			this.elementProvider = null;
-			this.dataHandler = null;
+			this.eventDataProvider = null;
 		}
 	}
 }

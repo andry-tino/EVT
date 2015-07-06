@@ -1,22 +1,22 @@
 /**
  * Copyright (c) 2015 Andrea Tino
- * File: EventData.ts
+ * File: eventData.ts
  */
 
-/// <reference path="EventID.ts"/>
+/// <reference path="../eventId.ts"/>
 
 module EVT {
 	/**
 	 * Class defining data for events.
 	 */
 	export class EventData {
-		private internalId: EventID;
+		private internalId: EventId;
 		
 		/** Gets or sets the timestamp. */
 		public timestamp: Date;
 		
 		/** Gets the event id. */
-		public get id(): EventID {
+		public get id(): EventId {
 			return this.internalId;
 		}
 		

@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2015 Andrea Tino
- * File: Disposable.ts
+ * File: disposable.ts
  */
 
 module EVT {

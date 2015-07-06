@@ -1,9 +1,9 @@
 /**
  * Copyright (c) 2015 Andrea Tino
- * File: ElementProvider.ts
+ * File: elementProvider.ts
  */
 
-/// <reference path="../HTMLElement.ts"/>
+/// <reference path="../htmlElement.ts"/>
 
 module EVT {
 	/**

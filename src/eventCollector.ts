@@ -1,0 +1,16 @@
+/**
+ * Copyright (c) 2015 Andrea Tino
+ * File: eventCollector.ts
+ */
+
+module EVT {
+	/**
+	 * Interface defining behavior for all classes collecting events.
+	 */
+	export interface EventCollector {
+		/**
+		 * Collects data.
+		 */
+		collect(): any;
+	}
+}

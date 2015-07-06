@@ -1,17 +1,17 @@
 /**
  * Copyright (c) 2015 Andrea Tino
- * File: ElementDistributedDataHandler.ts
+ * File: elementInSituEventDataProvider.ts
  */
  
-/// <reference path="DataHandler.ts"/>
-/// <reference path="../Disposable.ts"/>
-/// <reference path="../HTMLElement.ts"/>
+/// <reference path="eventDataProvider.ts"/>
+/// <reference path="../disposable.ts"/>
+/// <reference path="../htmlElement.ts"/>
 
 module EVT {
 	/**
 	 * Class implementing a depth first element providing strategy.
 	 */
-	export class ElementDistributedDataHandler implements DataHandler, Disposable {
+	export class ElementInSituEventDataProvider implements EventDataProvider, Disposable {
 		private element: HTMLElement;
 		
 		/**
@@ -30,10 +30,24 @@ module EVT {
 		}
 		
 		/**
-		 * Gets data.
+		 * Provides event data.
 		 */
-		public get data(): EventData {
+		public eventData(): EventData[] {
 			return null;
+		}
+		
+		/**
+		 * Gets a specific event basing on the id.
+		 */
+		public getEventDataById(id: EventId): EventData {
+			return null;
+		}
+		
+		/**
+		 * Gets the number of evend data stored in the specific implementation.
+		 */
+		public length(): Number {
+			return 0;
 		}
 		
 		/**

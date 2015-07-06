@@ -1,10 +1,10 @@
 /**
  * Copyright (c) 2015 Andrea Tino
- * File: DepthFirstElementProvider.ts
+ * File: depthFirstElementProvider.ts
  */
  
-/// <reference path="ElementProvider.ts"/>
-/// <reference path="../Disposable.ts"/>
+/// <reference path="elementProvider.ts"/>
+/// <reference path="../disposable.ts"/>
 
 module EVT {
 	/**

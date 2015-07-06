@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2015 Andrea Tino
- * File: HTMLElement.ts
+ * File: htmlElement.ts
  */
 
 module EVT {
