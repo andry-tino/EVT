@@ -3,7 +3,7 @@
  * File: elementProvider.ts
  */
 
-/// <reference path="../htmlElement.ts"/>
+/// <reference path="../evtHtmlElement.ts"/>
 
 module EVT {
 	/**
@@ -13,7 +13,7 @@ module EVT {
 		/**
 		 * Gets the element in the iterative sequence.
 		 */
-		element: HTMLElement;
+		element: EvtHTMLElement;
 		
 		/**
 		 * Gets a value indicating whether the current element is the first.

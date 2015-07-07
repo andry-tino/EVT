@@ -22,8 +22,13 @@ module EVT {
 		getEventDataById(id: EventId): EventData;
 		
 		/**
+		 * Adds an event data.
+		 */
+		addEventData(eventData: EventData);
+		
+		/**
 		 * Gets the number of evend data stored in the specific implementation.
 		 */
-		length(): Number;
+		length(): number;
 	}
 }

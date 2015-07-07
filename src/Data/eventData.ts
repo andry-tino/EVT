@@ -12,25 +12,42 @@ module EVT {
 	export class EventData {
 		private internalId: EventId;
 		
-		/** Gets or sets the timestamp. */
+		/** 
+		 * Gets or sets the timestamp.
+		 */
 		public timestamp: Date;
 		
-		/** Gets the event id. */
+		/** 
+		 * Gets the event id.
+		 */
 		public get id(): EventId {
 			return this.internalId;
 		}
 		
-		/** Gets or sets the description. */
+		/** 
+		 * Gets or sets the description.
+		 */
 		public description: string;
 		
-		/** Gets or sets the event type. */
+		/** 
+		 * Gets or sets the event type.
+		 */
 		public eventType: string;
 		
-		/** Gets or sets the event phase. */
+		/** 
+		 * Gets or sets the event phase.
+		 */
 		public eventPhase: Number;
 		
 		constructor() {
 			this.initialize;
+		}
+		
+		/**
+		 * Returns a string representation of the object.
+		 */
+		public toString(): string {
+			return "";
 		}
 		
 		private initialize() {

@@ -11,7 +11,7 @@ module EVT {
 	 * Class implementing a depth first element providing strategy.
 	 */
 	export class DepthFirstElementProvider implements ElementProvider, Disposable {
-		private sequence: Element[];
+		private sequence: HTMLElement[];
 		private cursor: number;
 		
 		/**

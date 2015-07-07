@@ -4,15 +4,19 @@
  */
  
 /// <reference path="eventDataProvider.ts"/>
+/// <reference path="eventData.ts"/>
 /// <reference path="../disposable.ts"/>
-/// <reference path="../htmlElement.ts"/>
+/// <reference path="../evtHtmlElement.ts"/>
+/// <reference path="../eventId.ts"/>
 
 module EVT {
 	/**
 	 * Class implementing a depth first element providing strategy.
 	 */
 	export class ElementInSituEventDataProvider implements EventDataProvider, Disposable {
-		private element: HTMLElement;
+		private evtElementAttributeName = "data-evt";
+		
+		private element: EvtHTMLElement;
 		
 		/**
 		 * Constructs a new instance of the class.
@@ -24,7 +28,6 @@ module EVT {
 			}
 			
 			this.element = element;
-			this.element.evtData = {};
 			
 			this.initializeElement();
 		}
@@ -33,21 +36,35 @@ module EVT {
 		 * Provides event data.
 		 */
 		public eventData(): EventData[] {
-			return null;
+			return this.element.evtData;
 		}
 		
 		/**
 		 * Gets a specific event basing on the id.
 		 */
 		public getEventDataById(id: EventId): EventData {
-			return null;
+			return this.search(id);
+		}
+		
+		/**
+		 * Adds an event data.
+		 * Remarks: Duplicates (same ID) not allowed, error on duplicate.
+		 */
+		public addEventData(eventData: EventData) {
+			var duplicate = this.search(eventData.id);
+			if (duplicate) {
+				throw new Error("Duplicate not allowed for adding: " + duplicate.toString());
+			}
+			
+			// Can add since not a duplicate
+			this.element.evtData.push(eventData);
 		}
 		
 		/**
 		 * Gets the number of evend data stored in the specific implementation.
 		 */
-		public length(): Number {
-			return 0;
+		public length(): number {
+			return this.element.evtData.length;
 		}
 		
 		/**
@@ -57,8 +74,31 @@ module EVT {
 			
 		}
 		
+		/**
+		 * Returns a string representation of the object.
+		 */
+		public toString(): string {
+			return "";
+		}
+		
 		private initializeElement() {
+			// The reason why we mark the element is because we want to
+			// have feedback from the DOM that EVT is active on its and
+			// which components.
+			this.element.setAttribute(this.evtElementAttributeName, "");
 			
+			this.element.evtData = this.element.evtData || new Array<EventData>();
+		}
+		
+		private search(id: EventId): EventData {
+			for (var item in this.element.evtData) {
+				if (item.id.compareTo(id) == 0) {
+					return item;
+				}
+			}
+			
+			// Not found
+			return null;
 		}
 	}
 }
