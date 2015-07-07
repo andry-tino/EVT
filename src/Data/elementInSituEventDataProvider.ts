@@ -14,7 +14,7 @@ module EVT {
 	 * Class implementing a depth first element providing strategy.
 	 */
 	export class ElementInSituEventDataProvider implements EventDataProvider, Disposable {
-		private evtElementAttributeName = "data-evt";
+		private static evtElementAttributeName = "data-evt";
 		
 		private element: EvtHTMLElement;
 		
@@ -71,7 +71,10 @@ module EVT {
 		 * Disposes data connected to element.
 		 */
 		public dispose() {
+			this.element.evtData = null;
 			
+			// We remove the attribute
+			ElementInSituEventDataProvider.unmark(this.element);
 		}
 		
 		/**
@@ -85,7 +88,7 @@ module EVT {
 			// The reason why we mark the element is because we want to
 			// have feedback from the DOM that EVT is active on its and
 			// which components.
-			this.element.setAttribute(this.evtElementAttributeName, "");
+			ElementInSituEventDataProvider.mark(this.element);
 			
 			this.element.evtData = this.element.evtData || new Array<EventData>();
 		}
@@ -99,6 +102,14 @@ module EVT {
 			
 			// Not found
 			return null;
+		}
+		
+		private static mark(element: HTMLElement) {
+			element.setAttribute(ElementInSituEventDataProvider.evtElementAttributeName, "");
+		}
+		
+		private static unmark(element: HTMLElement) {
+			element.removeAttribute(ElementInSituEventDataProvider.evtElementAttributeName);
 		}
 	}
 }
