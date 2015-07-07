@@ -17,10 +17,16 @@ module EVT {
 	 * to track events and export collected results.
 	 */
 	export class Evt implements EventCollector, Disposable {
+		private events = ["click"];
+		
 		private root: Element;
 		private elements: EvtHTMLElement[];
 		
 		private enabled: boolean;
+		
+		private handler = (e: Event) => {
+			
+		}
 		
 		/** 
 		 * Gets or sets the element provider.
@@ -76,13 +82,40 @@ module EVT {
 		 * Disposes all resources.
 		 */
 		public dispose() {
-			if ((<any>this.elementProvider).dispose) (<any>this.elementProvider).dispose();
+			if ((<any>this.elementProvider).dispose) {
+				(<any>this.elementProvider).dispose();
+			}
 		}
 		
 		private initialize() {
 			// Providing default values
 			this.elementProvider = new DepthFirstElementProvider(this.root);
 			this.eventDataProvider = (element: HTMLElement) => new ElementInSituEventDataProvider(element);
+			
+			this.scanTree();
+		}
+		
+		private scanTree() {
+			while (!this.elementProvider.isLast) {
+				var element = this.elementProvider.element; // Causes next to be called
+				this.attachHandlers(element);
+			}
+		}
+		
+		private unscanTree() {
+			
+		}
+		
+		private attachHandlers(element: HTMLElement) {
+			this.events.forEach(event => {
+				element.addEventListener(event, this.handler);
+			});
+		}
+		
+		private detachHandlers(element: HTMLElement) {
+			this.events.forEach(event => {
+				element.removeEventListener(event, this.handler);
+			});
 		}
 	}
 }

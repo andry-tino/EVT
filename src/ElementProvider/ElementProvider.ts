@@ -11,7 +11,8 @@ module EVT {
 	 */
 	export interface ElementProvider {
 		/**
-		 * Gets the element in the iterative sequence.
+		 * Gets the element in the iterative sequence and automatically
+		 * moves the cursor to the next.
 		 */
 		element: EvtHTMLElement;
 		
