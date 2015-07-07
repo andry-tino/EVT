@@ -4,9 +4,12 @@
  */
 
 /// <reference path="ElementProvider/elementProvider.ts"/>
-/// <reference path="eventCollector.ts"/>
+/// <reference path="ElementProvider/depthFirstElementProvider.ts"/>
+/// <reference path="Data/eventDataProvider.ts"/>
 /// <reference path="Data/elementInSituEventDataProvider.ts"/>
+/// <reference path="eventCollector.ts"/>
 /// <reference path="disposable.ts"/>
+/// <reference path="evtHtmlElement.ts"/>
 
 module EVT {
 	/**
@@ -15,12 +18,19 @@ module EVT {
 	 */
 	export class Evt implements EventCollector, Disposable {
 		private root: Element;
+		private elements: EvtHTMLElement[];
 		
-		/** Gets or sets the element provider. */
+		private enabled: boolean;
+		
+		/** 
+		 * Gets or sets the element provider.
+		 */
 		public elementProvider: ElementProvider;
 		
-		/** Gets or sets the data handler. */
-		public eventDataProvider: EventDataProvider;
+		/** 
+		 * Gets or sets the procedure returning the event data provider.
+		 */
+		public eventDataProvider: (HTMLElement) => EventDataProvider;
 		
 		/**
 		 * Constructs a new instance of the Evt class.
@@ -32,20 +42,30 @@ module EVT {
 			}
 			
 			this.root = root;
+			this.enabled = false;
 			
 			this.initialize();
 		}
 		
+		/**
+		 * Starts the EVT process.
+		 */
 		public start() {
-			// TODO: Implement
+			this.enabled = true;
 		}
 		
+		/**
+		 * Stops the EVT process.
+		 */
 		public stop() {
-			
+			this.enabled = false;
 		}
 		
+		/**
+		 * Performs the collection operations.
+		 */
 		public collect(): any {
-			
+			// To implement
 		}
 		
 		public eventData(): EventData {
@@ -56,13 +76,13 @@ module EVT {
 		 * Disposes all resources.
 		 */
 		public dispose() {
-			
+			if ((<any>this.elementProvider).dispose) (<any>this.elementProvider).dispose();
 		}
 		
 		private initialize() {
 			// Providing default values
-			this.elementProvider = null;
-			this.eventDataProvider = null;
+			this.elementProvider = new DepthFirstElementProvider(this.root);
+			this.eventDataProvider = (element: HTMLElement) => new ElementInSituEventDataProvider(element);
 		}
 	}
 }
