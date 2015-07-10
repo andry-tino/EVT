@@ -6,8 +6,17 @@ module.exports = function(grunt) {
     // Shell commands
     shell: {
       tsCompile: {
-        command: "tsc src/evt.ts --out out/<%= pkg.name %>.js --target ES5"
+        command: 'tsc src/evt.ts --out out/<%= pkg.name %>.js --target ES5'
       }
+    },
+    
+    // Copy
+    copy: {
+      examples: {
+        files: [
+          { src: ['out/<%= pkg.name %>.min.js'], dest: 'examples/evt/<%= pkg.name %>.min.js' },
+        ],
+      },
     },
     
     // Uglify
@@ -24,8 +33,10 @@ module.exports = function(grunt) {
 
   // Loading packages
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-shell');
 
   // Default task(s): build and minify
   grunt.registerTask('default', ['shell:tsCompile', 'uglify']);
+  grunt.registerTask('build-examples', ['shell:tsCompile', 'uglify', 'copy:examples']);
 };

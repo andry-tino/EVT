@@ -19,7 +19,7 @@ module EVT {
 	export class Evt implements EventCollector, Disposable {
 		private events = ["click"];
 		
-		private root: Element;
+		private root: HTMLElement;
 		private elements: EvtHTMLElement[];
 		
 		private enabled: boolean;
@@ -42,7 +42,7 @@ module EVT {
 		 * Constructs a new instance of the Evt class.
 		 * root: The element from which starting everything.
 		 */
-		constructor(root: Element) {
+		constructor(root: HTMLElement) {
 			if (!root) {
 				throw new Error("root cannot be null!");
 			}

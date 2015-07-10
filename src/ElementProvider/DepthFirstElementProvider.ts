@@ -18,7 +18,7 @@ module EVT {
 		 * Constructs a new instance of the class.
 		 * root: The start element from which creating the sequence.
 		 */
-		constructor(root: Element) {
+		constructor(root: HTMLElement) {
 			if (!root) {
 				throw new Error("Need an element!");
 			}
@@ -59,7 +59,7 @@ module EVT {
 		 * We build the sequence at construction time, so that we can iterate it
 		 * without any cost. Construction is O(N) allowing iteration to be O(1).
 		 */
-		private buildSequence(element: Element) {
+		private buildSequence(element: HTMLElement) {
 			if (!element) {
 				return;
 			}
