@@ -3,8 +3,76 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>EVT Example - Minimal</title>
+		<style type="text/css">
+			body { margin: 0; padding: 0 }
+			.main {
+				margin: 10px;
+			}
+			.title {
+				
+			}
+			.box {
+				background-color: #ff9900;
+				width: 150px;
+				height: 150px;
+			}
+			.box div {
+				margin: 10px;
+				opacity: 0.5;
+				width: 100%;
+				height: 100%;
+			}
+			.box > div {
+				background-color: #ff7700;
+			}
+			.box > div > div {
+				background-color: #ff5500;
+			}
+			.box > div > div > div {
+				background-color: #ff3300;
+			}
+			.box > div > div > div > div {
+				background-color: #ff1100;
+			}
+		</style>
+		<script type="text/javascript">
+			// Once HTML page loaded, run this
+			window.addEventListener('load', function(e) {
+				var script = document.createElement('script');
+				script.type = 'text/javascript';
+				script.src = '../evt/evt.min.js';
+				script.addEventListener('load', function(e) {
+					// Once EVT is loaded, create content
+					var createBox = function() {
+						var container = document.createElement('div');
+						container.className = 'box';
+						for (var i = 0, c = container; i < 4; i++) {
+							var n = document.createElement('div');
+							c.appendChild(n);
+							c = n;
+						}
+						return container;
+					};
+					
+					var main = document.createElement('div');
+					var title = document.createElement('h1');
+					var box1 = createBox();
+					
+					main.className = 'main';
+					
+					title.textContent = 'Welcome to EVT Minimal example';
+					
+					main.appendChild(title);
+					main.appendChild(box1);
+					document.body.appendChild(main);
+					
+					// Start EVT
+					var evt = new EVT.Evt(document.body);
+					evt.start();
+				});
+				document.head.appendChild(script);
+			});
+		</script>
 	</head>
-	<body>
-		Content of the document.
-	</body>
+	<body></body>
 </html>
