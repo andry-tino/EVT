@@ -37,10 +37,14 @@
 		</style>
 		<script type="text/javascript">
 			// Once HTML page loaded, run this
+			//var evtPath = '../evt/evt.min.js';
+			var evtPath = '../evt/evt.js'; // For debugging
+			
 			window.addEventListener('load', function(e) {
 				var script = document.createElement('script');
 				script.type = 'text/javascript';
-				script.src = '../evt/evt.min.js';
+				//script.src = '../evt/evt.min.js';
+				script.src = evtPath; // For debugging
 				script.addEventListener('load', function(e) {
 					// Once EVT is loaded, create content
 					var createBox = function() {
@@ -67,7 +71,7 @@
 					document.body.appendChild(main);
 					
 					// Start EVT
-					var evt = new EVT.Evt(document.body);
+					evt = new EVT.Evt(document.body);
 					evt.start();
 				});
 				document.head.appendChild(script);

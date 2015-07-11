@@ -15,6 +15,7 @@ module.exports = function(grunt) {
       examples: {
         files: [
           { src: ['out/<%= pkg.name %>.min.js'], dest: 'examples/evt/<%= pkg.name %>.min.js' },
+          { src: ['out/<%= pkg.name %>.js'], dest: 'examples/evt/<%= pkg.name %>.js' }
         ],
       },
     },

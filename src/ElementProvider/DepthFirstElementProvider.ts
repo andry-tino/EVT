@@ -24,6 +24,8 @@ module EVT {
 			}
 			
 			this.cursor = 0;
+			
+			this.sequence = new Array<HTMLElement>();
 			this.buildSequence(root);
 		}
 		
@@ -31,21 +33,26 @@ module EVT {
 		 * Gets the element in the iterative sequence.
 		 */
 		public get element(): HTMLElement {
-			return this.sequence[this.cursor++ % this.sequence.length];
+			var element = this.sequence[this.cursor++ % this.sequence.length];
+			
+			// Preventing cursor from growing uncontrolled until it reaches high numbers
+			this.cursor = ((this.cursor % this.sequence.length) == 0) ? 0 : this.cursor;
+			
+			return element;
 		}
 		
 		/**
 		 * Gets a value indicating whether the current element is the first.
 		 */
 		public get isFirst(): boolean {
-			return this.cursor == 0;
+			return (this.cursor % this.sequence.length) == 0;
 		}
 		
 		/**
 		 * Gets a value indicating whether the current element is the last.
 		 */
 		public get isLast(): boolean {
-			return this.cursor == this.sequence.length - 1;
+			return (this.cursor % this.sequence.length) == this.sequence.length - 1;
 		}
 		
 		/**
@@ -66,10 +73,11 @@ module EVT {
 			
 			this.sequence.push(element);
 			
-			var children = element.childNodes;
-			for (var child in children) {
+			var children = element.children;
+			for (var index in children) {
+				var child = children[index];
 				if (child.nodeType == Node.ELEMENT_NODE) {
-					this.buildSequence(child);
+					this.buildSequence(<HTMLElement>child);
 				}
 			}
 		}

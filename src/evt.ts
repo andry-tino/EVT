@@ -14,15 +14,20 @@
 module EVT {
 	/**
 	 * Class implementing all features by EVT and functrionalities
-	 * to track events and export collected results.
+	 * to track events and export collected results
+	 * 
+	 * Remarks:
+	 * Not handling changes in the DOM.
 	 */
 	export class Evt implements EventCollector, Disposable {
 		private events = ["click"];
 		
 		private root: HTMLElement;
-		private elements: EvtHTMLElement[];
-		
+		private elements: EvtHTMLElement[];		
 		private enabled: boolean;
+
+		// Cached value
+		private collectedData: any;
 		
 		private handler = (e: Event) => {
 			
@@ -49,6 +54,7 @@ module EVT {
 			
 			this.root = root;
 			this.enabled = false;
+			this.collectedData = null;
 			
 			this.initialize();
 		}
@@ -71,7 +77,11 @@ module EVT {
 		 * Performs the collection operations.
 		 */
 		public collect(): any {
-			// To implement
+			if (this.collectedData) {
+				return this.collectedData;
+			}
+			
+			// TODO: Implement
 		}
 		
 		public eventData(): EventData {
