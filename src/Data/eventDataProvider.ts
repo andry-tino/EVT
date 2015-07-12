@@ -4,6 +4,7 @@
  */
 
 /// <reference path="eventData.ts"/>
+/// <reference path="eventBatch.ts"/>
 /// <reference path="../eventId.ts"/>
 
 module EVT {
@@ -19,7 +20,7 @@ module EVT {
 		/**
 		 * Gets a specific event basing on the id.
 		 */
-		getEventDataById(id: EventId): EventData;
+		getEventBatchById(id: EventId): EventBatch;
 		
 		/**
 		 * Adds an event data.
