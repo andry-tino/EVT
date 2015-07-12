@@ -5,9 +5,11 @@
  
 /// <reference path="eventDataProvider.ts"/>
 /// <reference path="eventData.ts"/>
+/// <reference path="eventBatch.ts"/>
 /// <reference path="../disposable.ts"/>
 /// <reference path="../evtHtmlElement.ts"/>
 /// <reference path="../eventId.ts"/>
+/// <reference path="../evtEvent.ts"/>
 
 module EVT {
 	/**
@@ -16,7 +18,33 @@ module EVT {
 	export class ElementInSituEventDataProvider implements EventDataProvider, Disposable {
 		private static evtElementAttributeName = "data-evt";
 		
+		private events = ["click"];
 		private element: EvtHTMLElement;
+		
+		private handler = (e: Event) => {
+			// Retrieving/initialiing the event id
+			var event: EvtEvent = <EvtEvent>e;
+			event.evtEventId = event.evtEventId || new EventId();
+			
+			// Retrieving target
+			var target = e.currentTarget;
+			if (target != this.element) {
+				console.log("Target/element inconsistency! Cannot perform EVT operations!");
+				return;
+			}
+			
+			// Defining data
+			var eventData = new EventData(event.evtEventId);
+			eventData.eventType = e.type;
+			eventData.eventPhase = e.eventPhase;
+			eventData.description = ""; // TODO: Add a description
+			
+			// Adding data
+			this.element.evtData.push(eventData);
+			console.log("Logged: t=" + eventData.timestamp.toString() + 
+				" id=" + eventData.id + 
+				" d=" + eventData.description);
+		}
 		
 		/**
 		 * Constructs a new instance of the class.
@@ -42,7 +70,7 @@ module EVT {
 		/**
 		 * Gets a specific event basing on the id.
 		 */
-		public getEventDataById(id: EventId): EventData {
+		public getEventBatchById(id: EventId): EventBatch {
 			return this.search(id);
 		}
 		
@@ -75,6 +103,7 @@ module EVT {
 			
 			// We remove the attribute
 			ElementInSituEventDataProvider.unmark(this.element);
+			this.detachHandlers(this.element);
 		}
 		
 		/**
@@ -91,17 +120,68 @@ module EVT {
 			ElementInSituEventDataProvider.mark(this.element);
 			
 			this.element.evtData = this.element.evtData || new Array<EventData>();
+			
+			// Attaching handlers
+			this.attachHandlers(this.element);
 		}
 		
-		private search(id: EventId): EventData {
+		// Remember we can have more events for the same id: as many as the number of
+		// event phases.
+		private search(id: EventId): EventBatch {
+			var batch = new EventBatch();
+			var batchComplete = (b: EventBatch): boolean => {
+				return 
+					(b.atCapture != null) &&	
+					(b.atBubble != null) && 
+					(b.atTarget != null);
+			};
+			var insertInBatch = (x: EventData, b: EventBatch) => {
+				switch (x.eventPhase) {
+				case Event.CAPTURING_PHASE:
+					if (b.atCapture != null) {
+						throw new Error("Batch already has atCapture!");
+					}
+					b.atCapture = x;
+					break;
+				case Event.BUBBLING_PHASE:
+					if (b.atBubble != null) {
+						throw new Error("Batch already has atBubble!");
+					}
+					b.atBubble = x;
+					break;
+				case Event.AT_TARGET:
+					if (b.atTarget != null) {
+						throw new Error("Batch already has atTarget!");
+					}
+					b.atTarget = x;
+					break;
+				default:
+					throw new Error("Unexpected value for batch: " + x.eventPhase);
+				}
+			};
+			
 			for (var item in this.element.evtData) {
 				if (item.id.compareTo(id) == 0) {
-					return item;
+					insertInBatch(item, batch);
+					if (batchComplete(batch)) {
+						break;
+					}
 				}
 			}
 			
-			// Not found
-			return null;
+			return batch;
+		}
+		
+		private attachHandlers(element: HTMLElement) {
+			this.events.forEach(event => {
+				element.addEventListener(event, this.handler);
+			});
+		}
+		
+		private detachHandlers(element: HTMLElement) {
+			this.events.forEach(event => {
+				element.removeEventListener(event, this.handler);
+			});
 		}
 		
 		private static mark(element: HTMLElement) {

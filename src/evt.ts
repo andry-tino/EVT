@@ -20,18 +20,12 @@ module EVT {
 	 * Not handling changes in the DOM.
 	 */
 	export class Evt implements EventCollector, Disposable {
-		private events = ["click"];
-		
 		private root: HTMLElement;
-		private elements: EvtHTMLElement[];		
+		private dataProviders: EventDataProvider[];		
 		private enabled: boolean;
 
 		// Cached value
 		private collectedData: any;
-		
-		private handler = (e: Event) => {
-			
-		}
 		
 		/** 
 		 * Gets or sets the element provider.
@@ -53,6 +47,7 @@ module EVT {
 			}
 			
 			this.root = root;
+			this.dataProviders = new Array<EventDataProvider>();
 			this.enabled = false;
 			this.collectedData = null;
 			
@@ -107,24 +102,14 @@ module EVT {
 		
 		private scanTree() {
 			while (!this.elementProvider.isLast) {
-				var element = this.elementProvider.element; // Causes next to be called
-				this.attachHandlers(element);
+				var element = this.elementProvider.element; // Iterating
+				this.dataProviders.push(this.eventDataProvider(element));
 			}
 		}
 		
 		private unscanTree() {
-			
-		}
-		
-		private attachHandlers(element: HTMLElement) {
-			this.events.forEach(event => {
-				element.addEventListener(event, this.handler);
-			});
-		}
-		
-		private detachHandlers(element: HTMLElement) {
-			this.events.forEach(event => {
-				element.removeEventListener(event, this.handler);
+			this.dataProviders.forEach(dataProvider => {
+				// TODO
 			});
 		}
 	}

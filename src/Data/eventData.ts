@@ -37,10 +37,11 @@ module EVT {
 		/** 
 		 * Gets or sets the event phase.
 		 */
-		public eventPhase: Number;
+		public eventPhase: number;
 		
-		constructor() {
-			this.initialize;
+		constructor(eventId?: EventId) {
+			this.timestamp = new Date();
+			this.id = (eventId != null) ? eventId : new EventId();
 		}
 		
 		/**
@@ -48,10 +49,6 @@ module EVT {
 		 */
 		public toString(): string {
 			return "";
-		}
-		
-		private initialize() {
-			this.timestamp = new Date();
 		}
 	}
 }
