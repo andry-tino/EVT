@@ -90,6 +90,21 @@ module EVT {
 			if ((<any>this.elementProvider).dispose) {
 				(<any>this.elementProvider).dispose();
 			}
+			
+			this.dataProviders.forEach(dataProvider => {
+				if ((<any>dataProvider).dispose) {
+					(<any>dataProvider).dispose();
+				}
+			});
+			this.dataProviders = null;
+			
+			this.elementProvider = null;
+			this.eventDataProvider = null;
+			
+			if ((<any>this.collectedData).dispose) {
+				(<any>this.collectedData).dispose();
+			}
+			this.collectedData = null;
 		}
 		
 		private initialize() {

@@ -41,7 +41,7 @@ module EVT {
 		
 		constructor(eventId?: EventId) {
 			this.timestamp = new Date();
-			this.id = (eventId != null) ? eventId : new EventId();
+			this.internalId = (eventId != null) ? eventId : new EventId();
 		}
 		
 		/**

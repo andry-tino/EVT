@@ -103,6 +103,7 @@ module EVT {
 			
 			// We remove the attribute
 			ElementInSituEventDataProvider.unmark(this.element);
+			// And finally remove handlers
 			this.detachHandlers(this.element);
 		}
 		
@@ -174,13 +175,15 @@ module EVT {
 		
 		private attachHandlers(element: HTMLElement) {
 			this.events.forEach(event => {
-				element.addEventListener(event, this.handler);
+				element.addEventListener(event, this.handler, true); // Capture
+				element.addEventListener(event, this.handler, false); // Bubble
 			});
 		}
 		
 		private detachHandlers(element: HTMLElement) {
 			this.events.forEach(event => {
-				element.removeEventListener(event, this.handler);
+				element.removeEventListener(event, this.handler, true); // Capture
+				element.removeEventListener(event, this.handler, false); // Bubble
 			});
 		}
 		

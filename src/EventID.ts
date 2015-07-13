@@ -56,9 +56,9 @@ module EVT {
 				return Math.floor(rnd() * 0x10000);
 			};
 			
-			this.nums.forEach(item => {
-				item = s4();
-			});
+			for (var i = 0; i < EventId.byteLength; i++) {
+				this.nums[i] = s4();
+			}
 		}
 	}
 }
