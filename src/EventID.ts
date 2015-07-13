@@ -25,9 +25,17 @@ module EVT {
 		}
 		
 		/**
-		 * Compares two objects.
+		 * Compares this object to another one. The operation performed
+		 * is this <=> other in this order
 		 */
 		public compareTo(other: EventId): number {
+			for (var i = 0; i < EventId.byteLength; i++) {
+				if (this.nums[i] < other.nums[i]) {
+					return -1;
+				} else if (this.nums[i] > other.nums[i]) {
+					return 1
+				}
+			}
 			return 0;
 		}
 		

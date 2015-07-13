@@ -161,7 +161,9 @@ module EVT {
 				}
 			};
 			
-			for (var item in this.element.evtData) {
+			for (var index in this.element.evtData) {
+				var item = this.element.evtData[index];
+				
 				if (item.id.compareTo(id) == 0) {
 					insertInBatch(item, batch);
 					if (batchComplete(batch)) {
