@@ -3,6 +3,8 @@
  * File: eventCollector.ts
  */
 
+/// <reference path="volumeStream.ts"/>
+
 module EVT {
 	/**
 	 * Interface defining behavior for all classes collecting events.
@@ -11,6 +13,6 @@ module EVT {
 		/**
 		 * Collects data.
 		 */
-		collect(): any;
+		collect(): VolumeStream;
 	}
 }

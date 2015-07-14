@@ -7,7 +7,7 @@
 
 module EVT {
 	/**
-	 * Class defining data for events.
+	 * Interface defining data for events.
 	 */
 	export interface EvtEvent extends Event {
 		/**
