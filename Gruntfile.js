@@ -8,7 +8,7 @@ module.exports = function(grunt) {
       tsCompile: {
         command: [
           'tsc src/evt.ts --out out/<%= pkg.name %>.js --target ES5',
-          'tsc src/server/evtServer.ts --out out/<%= pkg.name %>-srv.js --target ES5'
+          'tsc src/server/evtServer.ts --out out/<%= pkg.name %>-srv.js --target ES5 --module'
         ].join('&&')
       }
     },
