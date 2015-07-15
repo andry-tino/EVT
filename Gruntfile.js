@@ -6,7 +6,10 @@ module.exports = function(grunt) {
     // Shell commands
     shell: {
       tsCompile: {
-        command: 'tsc src/evt.ts --out out/<%= pkg.name %>.js --target ES5'
+        command: [
+          'tsc src/evt.ts --out out/<%= pkg.name %>.js --target ES5',
+          'tsc src/server/evtServer.ts --out out/<%= pkg.name %>-srv.js --target ES5'
+        ].join('&&')
       }
     },
     
@@ -15,7 +18,9 @@ module.exports = function(grunt) {
       examples: {
         files: [
           { src: ['out/<%= pkg.name %>.min.js'], dest: 'examples/evt/<%= pkg.name %>.min.js' },
-          { src: ['out/<%= pkg.name %>.js'], dest: 'examples/evt/<%= pkg.name %>.js' }
+          { src: ['out/<%= pkg.name %>.js'], dest: 'examples/evt/<%= pkg.name %>.js' },
+          { src: ['out/<%= pkg.name %>-srv.min.js'], dest: 'examples/evt/<%= pkg.name %>-srv.min.js' },
+          { src: ['out/<%= pkg.name %>-srv.js'], dest: 'examples/evt/<%= pkg.name %>-srv.js' }
         ],
       },
     },
@@ -26,8 +31,10 @@ module.exports = function(grunt) {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src: 'out/<%= pkg.name %>.js',
-        dest: 'out/<%= pkg.name %>.min.js'
+        files: {
+          'out/<%= pkg.name %>.js': 'out/<%= pkg.name %>.min.js',
+          'out/<%= pkg.name %>-srv.js': 'out/<%= pkg.name %>-srv.min.js',
+        }
       }
     }
   });
