@@ -35,7 +35,7 @@ module EVT {
 		/** 
 		 * Gets or sets the procedure returning the event data provider.
 		 */
-		public eventDataProvider: (HTMLElement) => EventDataProvider;
+		public eventDataProvider: (element: HTMLElement) => EventDataProvider;
 		
 		/**
 		 * Constructs a new instance of the Evt class.

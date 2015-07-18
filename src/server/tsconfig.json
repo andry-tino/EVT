@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "ES5",
+        "noImplicitAny": true,
+        "removeComments": false,
+        "preserveConstEnums": true,
+        "out": "out/evt-srv-out.js",
+        "sourceMap": false
+    },
+    "files": [
+        "src/server/Model/evtMessage.ts",
+        "src/server/Model/message.ts",
+        "src/server/evtServer.ts"
+    ]
+}

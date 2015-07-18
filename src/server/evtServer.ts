@@ -35,7 +35,7 @@ module EVT {
 		}
 		
 		/**
-		 * sTOPS THE SERVER.
+		 * Stops the server.
 		 */
 		public stop() {
 			

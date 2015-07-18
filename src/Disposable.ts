@@ -11,6 +11,6 @@ module EVT {
 		/**
 		 * Disposes the object.
 		 */
-		dispose();
+		dispose(): void;
 	}
 }

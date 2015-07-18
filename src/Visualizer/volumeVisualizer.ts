@@ -13,11 +13,11 @@ module EVT {
 		/**
 		 * Visualizers must require an host element.
 		 */
-		new(host: HTMLElement);
+		host: HTMLElement;
 		
 		/**
 		 * Pushes a new volume stream to be blended with existing one.
 		 */
-		push(volume: VolumeStream);
+		push(volume: VolumeStream): void;
 	}
 }

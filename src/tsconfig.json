@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "noImplicitAny": true,
+        "removeComments": false,
+        "preserveConstEnums": true,
+        "out": "out/evt-out.js",
+        "sourceMap": false
+    },
+    "files": [
+        "src/Data/elementInSituEventDataProvider.ts",
+        "src/Data/eventBatch.ts",
+        "src/Data/eventData.ts",
+        "src/Data/eventDataProvider.ts",
+        "src/ElementProvider/depthFirstElementProvider.ts",
+        "src/ElementProvider/elementProvider.ts",
+        "src/Visualizer/staticVolumeVisualizer.ts",
+        "src/Visualizer/volumeVisualizer.ts",
+        "src/comparable.ts",
+        "src/disposable.ts",
+        "src/eventCollector.ts",
+        "src/eventId.ts",
+        "src/evt.ts",
+        "src/evtEvent.ts",
+        "src/evtHtmlElement.ts",
+        "src/serializable.ts",
+        "src/treeStructure.ts",
+        "src/volumeStream.ts"
+    ]
+}

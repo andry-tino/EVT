@@ -25,7 +25,7 @@ module EVT {
 		/**
 		 * Adds an event data.
 		 */
-		addEventData(eventData: EventData);
+		addEventData(eventData: EventData): void;
 		
 		/**
 		 * Gets the number of evend data stored in the specific implementation.

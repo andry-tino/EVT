@@ -1,15 +1,24 @@
+/**
+ * Grunt configuration.
+ * Remarks: Supported platforms:
+ * - Windows
+ */
+
 module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    tsc: 'node node_modules/typescript/bin/tsc.js',
+    outName: '<%= pkg.name %>-out',
+    outServerName: '<%= pkg.name %>-srv-out',
     
     // Shell commands
     shell: {
-      tsCompile: {
-        command: [
-          'tsc src/evt.ts --out out/<%= pkg.name %>.js --target ES5',
-          'tsc src/server/evtServer.ts --out out/<%= pkg.name %>-srv.js --target ES5 --module'
-        ].join('&&')
+      compile: {
+        command: '<%= tsc %> --project src'
+      },
+      compileServer: {
+        command: '<%= tsc %> --project src/server'
       }
     },
     
@@ -17,10 +26,10 @@ module.exports = function(grunt) {
     copy: {
       examples: {
         files: [
-          { src: ['out/<%= pkg.name %>.min.js'], dest: 'examples/evt/<%= pkg.name %>.min.js' },
-          { src: ['out/<%= pkg.name %>.js'], dest: 'examples/evt/<%= pkg.name %>.js' },
-          { src: ['out/<%= pkg.name %>-srv.min.js'], dest: 'examples/evt/<%= pkg.name %>-srv.min.js' },
-          { src: ['out/<%= pkg.name %>-srv.js'], dest: 'examples/evt/<%= pkg.name %>-srv.js' }
+          { src: ['out/<%= outName %>.min.js'], dest: 'examples/evt/<%= outName %>.min.js' },
+          { src: ['out/<%= outName %>.js'], dest: 'examples/evt/<%= outName %>.js' },
+          { src: ['out/<%= outServerName %>.min.js'], dest: 'examples/evt/<%= outServerName %>.min.js' },
+          { src: ['out/<%= outServerName %>.js'], dest: 'examples/evt/<%= outServerName %>.js' }
         ],
       },
     },
@@ -32,8 +41,12 @@ module.exports = function(grunt) {
       },
       build: {
         files: {
-          'out/<%= pkg.name %>.js': 'out/<%= pkg.name %>.min.js',
-          'out/<%= pkg.name %>-srv.js': 'out/<%= pkg.name %>-srv.min.js',
+          'out/<%= outName %>.js': 'out/<%= outName %>.min.js'
+        }
+      },
+      buildServer: {
+        files: {
+          'out/<%= outServerName %>.js': 'out/<%= outServerName %>.min.js'
         }
       }
     }
@@ -45,6 +58,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
 
   // Default task(s): build and minify
-  grunt.registerTask('default', ['shell:tsCompile', 'uglify']);
-  grunt.registerTask('build-examples', ['shell:tsCompile', 'uglify', 'copy:examples']);
+  grunt.registerTask('default', ['shell:compile', 'shell:compileServer', 'uglify:build', 'uglify:buildServer']);
+  grunt.registerTask('build-examples', ['shell:compile', 'shell:compileServer', 'uglify:build', 'uglify:buildServer', 'copy:examples']);
 };

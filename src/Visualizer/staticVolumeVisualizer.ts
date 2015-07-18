@@ -9,7 +9,14 @@ module EVT {
 	/**
 	 * Class for static visualization.
 	 */
-	export class StaticVolumeVisualizer extends VolumeVisualizer {
-		public a: any;
+	export class StaticVolumeVisualizer implements VolumeVisualizer {
+		public host: HTMLElement;
+		
+		/**
+		 * Pushes a new volume stream to be blended with existing one.
+		 */
+		public push(volume: VolumeStream) {
+			
+		}
 	}
 }
