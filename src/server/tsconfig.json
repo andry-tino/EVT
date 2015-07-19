@@ -9,8 +9,8 @@
         "sourceMap": false
     },
     "files": [
-        "src/server/Model/evtMessage.ts",
-        "src/server/Model/message.ts",
-        "src/server/evtServer.ts"
+        "Model/evtMessage.ts",
+        "Model/message.ts",
+        "evtServer.ts"
     ]
 }
