@@ -3,9 +3,11 @@
  * File: volumeVisualizer.ts
  */
 
-/// <reference path="../volumeStream.ts"/>
+import volumeStream = require('../volumeStream');
 
-module EVT {
+import VolumeStream = volumeStream.EVT.VolumeStream;
+
+export module EVT {
 	/**
 	 * Interface defining behavior for all classes acting as visualizers.
 	 */

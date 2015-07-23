@@ -3,9 +3,11 @@
  * File: evtHtmlElement.ts
  */
 
-/// <reference path="Data/eventData.ts"/>
+import eventData = require('./Data/eventData');
 
-module EVT {
+import EventData = eventData.EVT.EventData;
+
+export module EVT {
 	/**
 	 * Extending HTMLElement intrface with stuff we need.
 	 */

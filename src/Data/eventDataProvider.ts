@@ -3,11 +3,15 @@
  * File: eventDataProvider.ts
  */
 
-/// <reference path="eventData.ts"/>
-/// <reference path="eventBatch.ts"/>
-/// <reference path="../eventId.ts"/>
+import eventData = require('./eventData');
+import eventBatch = require('./eventBatch');
+import eventId = require('../eventId');
 
-module EVT {
+import EventData = eventData.EVT.EventData;
+import EventBatch = eventBatch.EVT.EventBatch;
+import EventId = eventId.EVT.EventId;
+
+export module EVT {
 	/**
 	 * Interface defining behavior for all classes acting as event data providers.
 	 */

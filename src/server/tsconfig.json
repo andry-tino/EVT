@@ -6,6 +6,7 @@
         "removeComments": false,
         "preserveConstEnums": true,
         "out": "out/evt-srv-out.js",
+        "outDir": "../../out/js",
         "sourceMap": false
     },
     "files": [

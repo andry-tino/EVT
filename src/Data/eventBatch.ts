@@ -3,9 +3,11 @@
  * File: eventBatch.ts
  */
 
-/// <reference path="eventData.ts"/>
+import eventData = require('./eventData');
 
-module EVT {
+import EventData = eventData.EVT.EventData;
+
+export module EVT {
 	/**
 	 * Class defining batch for events.
 	 */

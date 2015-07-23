@@ -2,16 +2,24 @@
  * Copyright (c) 2015 Andrea Tino
  * File: elementInSituEventDataProvider.ts
  */
- 
-/// <reference path="eventDataProvider.ts"/>
-/// <reference path="eventData.ts"/>
-/// <reference path="eventBatch.ts"/>
-/// <reference path="../disposable.ts"/>
-/// <reference path="../evtHtmlElement.ts"/>
-/// <reference path="../eventId.ts"/>
-/// <reference path="../evtEvent.ts"/>
 
-module EVT {
+import eventDataProvider = require('./eventDataProvider');
+import eventData = require('./eventData');
+import eventBatch = require('./eventBatch');
+import disposable = require('../disposable');
+import evtHtmlElement = require('../evtHtmlElement');
+import eventId = require('../eventId');
+import evtEvent = require('../evtEvent');
+
+import EventDataProvider = eventDataProvider.EVT.EventDataProvider;
+import EventData = eventData.EVT.EventData;
+import EventBatch = eventBatch.EVT.EventBatch;
+import Disposable = disposable.EVT.Disposable;
+import EvtHTMLElement = evtHtmlElement.EVT.EvtHTMLElement;
+import EventId = eventId.EVT.EventId;
+import EvtEvent = evtEvent.EVT.EvtEvent;
+
+export module EVT {
 	/**
 	 * Class implementing a depth first element providing strategy.
 	 */

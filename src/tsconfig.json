@@ -4,8 +4,9 @@
         "noImplicitAny": true,
         "removeComments": false,
         "preserveConstEnums": true,
-        "out": "out/evt-out.js",
-        "sourceMap": false
+        "sourceMap": false,
+        "module": "amd",
+        "outDir": "../out/js"
     },
     "files": [
         "Data/elementInSituEventDataProvider.ts",

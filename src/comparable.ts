@@ -3,7 +3,7 @@
  * File: comparable.ts
  */
 
-module EVT {
+export module EVT {
 	/**
 	 * Interface defining comparable objects.
 	 */

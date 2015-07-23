@@ -3,9 +3,11 @@
  * File: elementProvider.ts
  */
 
-/// <reference path="../evtHtmlElement.ts"/>
+import evtHtmlElement = require('../evtHtmlElement');
 
-module EVT {
+import EvtHTMLElement = evtHtmlElement.EVT.EvtHTMLElement;
+
+export module EVT {
 	/**
 	 * Interface defining behavior for all classes acting as element providers.
 	 */

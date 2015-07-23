@@ -3,7 +3,7 @@
  * File: disposable.ts
  */
 
-module EVT {
+export module EVT {
 	/**
 	 * Interface defining disposable objects.
 	 */

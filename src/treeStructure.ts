@@ -3,14 +3,19 @@
  * File: treeStructure.ts
  */
 
-/// <reference path="serializable.ts"/>
-/// <reference path="comparable.ts"/>
+import serializable = require('./serializable');
+import treeStructure = require('./treeStructure');
+import comparable = require('./comparable');
 
-module EVT {
+import Serializable = serializable.EVT.Serializable;
+import TreeStructure = treeStructure.EVT.TreeStructure;
+import Comparable = comparable.EVT.Comparable<TreeStructure>;
+
+export module EVT {
 	/**
 	 * Class storing the XML structure analyzed.
 	 */
-	export class TreeStructure implements Serializable, Comparable<TreeStructure> {
+	export class TreeStructure implements Serializable, Comparable {
 		private nodes: string[];
 		
 		constructor() {

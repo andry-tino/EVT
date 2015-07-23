@@ -2,11 +2,14 @@
  * Copyright (c) 2015 Andrea Tino
  * File: depthFirstElementProvider.ts
  */
- 
-/// <reference path="elementProvider.ts"/>
-/// <reference path="../disposable.ts"/>
 
-module EVT {
+import elementProvider = require('./elementProvider');
+import disposable = require('../disposable');
+
+import ElementProvider = elementProvider.EVT.ElementProvider;
+import Disposable = disposable.EVT.Disposable;
+
+export module EVT {
 	/**
 	 * Class implementing a depth first element providing strategy.
 	 */

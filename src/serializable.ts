@@ -3,7 +3,7 @@
  * File: serializable.ts
  */
 
-module EVT {
+export module EVT {
 	/**
 	 * Interface defining serializable objects.
 	 */
