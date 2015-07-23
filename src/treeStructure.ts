@@ -9,13 +9,13 @@ import comparable = require('./comparable');
 
 import Serializable = serializable.EVT.Serializable;
 import TreeStructure = treeStructure.EVT.TreeStructure;
-import Comparable = comparable.EVT.Comparable<TreeStructure>;
+import Comparable = comparable.EVT.Comparable;
 
 export module EVT {
 	/**
 	 * Class storing the XML structure analyzed.
 	 */
-	export class TreeStructure implements Serializable, Comparable {
+	export class TreeStructure implements Serializable, Comparable<TreeStructure> {
 		private nodes: string[];
 		
 		constructor() {
