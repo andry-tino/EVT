@@ -14,6 +14,18 @@ module.exports = function(grunt) {
     outName: '<%= pkg.name %>-out',
     outServerName: '<%= pkg.name %>-srv-out',
     
+    // Require.js
+    requirejs: {
+      compile: {
+        options: {
+          baseUrl: "path/to/base",
+          mainConfigFile: "path/to/config.js",
+          name: "path/to/almond", // assumes a production build using almond
+          out: "path/to/optimized.js"
+        }
+      }
+    },
+    
     // Shell commands
     shell: {
       compile: {
@@ -95,6 +107,7 @@ module.exports = function(grunt) {
   grunt.initConfig(config);
 
   // Loading packages
+  grunt.loadNpmTasks('grunt-requirejs');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-shell');
