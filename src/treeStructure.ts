@@ -4,11 +4,9 @@
  */
 
 import serializable = require('./serializable');
-import treeStructure = require('./treeStructure');
 import comparable = require('./comparable');
 
 import Serializable = serializable.EVT.Serializable;
-import TreeStructure = treeStructure.EVT.TreeStructure;
 import Comparable = comparable.EVT.Comparable;
 
 export module EVT {

@@ -18,10 +18,11 @@ module.exports = function(grunt) {
     requirejs: {
       compile: {
         options: {
-          baseUrl: "path/to/base",
-          mainConfigFile: "path/to/config.js",
-          name: "path/to/almond", // assumes a production build using almond
-          out: "path/to/optimized.js"
+          baseUrl: "out",
+          bundles: {
+            'brws': ['volumeStream', 'treeStructure', 'serializable', 'comparable']
+          },
+          out: 'out/brws.js'
         }
       }
     },
@@ -107,14 +108,14 @@ module.exports = function(grunt) {
   grunt.initConfig(config);
 
   // Loading packages
-  grunt.loadNpmTasks('grunt-requirejs');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-shell');
 
   // Tasks
   grunt.registerTask('default', ['shell:compileAll', 'uglify:all']);
-  grunt.registerTask('build-def', ['shell:compile', 'uglify:def']);
+  grunt.registerTask('build-def', ['shell:compile', 'requirejs']);
   grunt.registerTask('build-srv', ['shell:compileServer', 'uglify:srv']);
   grunt.registerTask('build-examples', ['shell:compileAll', 'uglify:all', 'copy:examples:all']);
 };
