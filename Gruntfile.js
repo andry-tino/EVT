@@ -14,15 +14,17 @@ module.exports = function(grunt) {
     outName: '<%= pkg.name %>-out',
     outServerName: '<%= pkg.name %>-srv-out',
     
-    // Require.js
+    // Require
     requirejs: {
       compile: {
         options: {
           baseUrl: "out",
-          bundles: {
-            'brws': ['volumeStream', 'treeStructure', 'serializable', 'comparable']
-          },
-          out: 'out/brws.js'
+          modules: [
+            {
+              name: 'volumeStream',
+              include: ['treeStructure', 'serializable', 'comparable']
+            }
+          ]
         }
       }
     },
@@ -43,21 +45,9 @@ module.exports = function(grunt) {
     // Copy
     copy: {
       examples: {
-        def: {
-          files: [
-            { src: ['out/<%= outName %>.min.js'], dest: 'examples/evt/<%= outName %>.min.js' },
-            { src: ['out/<%= outName %>.js'], dest: 'examples/evt/<%= outName %>.js' }
-          ]
-        },
-        srv: {
-          files: [
-            { src: ['out/<%= outServerName %>.min.js'], dest: 'examples/evt/<%= outServerName %>.min.js' },
-            { src: ['out/<%= outServerName %>.js'], dest: 'examples/evt/<%= outServerName %>.js' }
-          ]
-        },
-        all: {
-          files: []
-        }
+        files: [
+          { src: ['out/evt.js'], dest: 'examples/evt/' }
+        ]
       },
     },
     
@@ -83,6 +73,7 @@ module.exports = function(grunt) {
   };
 
   // Configuration post-initialization
+  /*
   var utils = {
     acquire: function(dst, src) {
       for (var key in src) {
@@ -103,6 +94,7 @@ module.exports = function(grunt) {
     utils.acquire(uglify.all.files, uglify.def.files);
     utils.acquire(uglify.all.files, uglify.srv.files);
   })(config.uglify);
+  */
 
   // Applying configuration
   grunt.initConfig(config);
@@ -114,8 +106,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
 
   // Tasks
-  grunt.registerTask('default', ['shell:compileAll', 'uglify:all']);
-  grunt.registerTask('build-def', ['shell:compile', 'requirejs']);
-  grunt.registerTask('build-srv', ['shell:compileServer', 'uglify:srv']);
-  grunt.registerTask('build-examples', ['shell:compileAll', 'uglify:all', 'copy:examples:all']);
+  grunt.registerTask('default', ['shell:compileAll', 'uglify:all']); // Not working
+  grunt.registerTask('build-def', ['shell:compile', 'requirejs']); // Not working
+  grunt.registerTask('build-def2', ['shell:compile']); // TBR
+  grunt.registerTask('build-srv', ['shell:compileServer', 'uglify:srv']); // Not working
+  //grunt.registerTask('build-examples', ['shell:compileAll', 'uglify:all', 'copy:examples:all']); // Not working
+  grunt.registerTask('build-examples', ['shell:compile', 'copy:examples']);
+  grunt.registerTask('aaa', ['copy:examples']); // TBR
 };

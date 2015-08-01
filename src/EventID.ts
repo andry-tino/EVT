@@ -3,10 +3,8 @@
  * File: eventId.ts
  */
 
-import eventId = require('./eventId');
 import comparable = require('./comparable');
 
-import EventId = eventId.EVT.EventId;
 import Comparable = comparable.EVT.Comparable;
 
 export module EVT {
