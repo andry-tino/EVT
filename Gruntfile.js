@@ -11,33 +11,50 @@ module.exports = function(grunt) {
     
     tsc: 'node node_modules/typescript/bin/tsc.js',
     
-    outName: '<%= pkg.name %>-out',
+    outName: '<%= pkg.name %>-bws-out',
     outServerName: '<%= pkg.name %>-srv-out',
     
     // Require
     requirejs: {
-      compile: {
+      browser: {
         options: {
           baseUrl: "out",
           modules: [
             {
-              name: 'volumeStream',
-              include: ['treeStructure', 'serializable', 'comparable']
+              name: 'evt',
+              include: [
+                'Data/elementInSituEventDataProvider',
+                'Data/eventBatch',
+                'Data/eventData',
+                'Data/eventDataProvider',
+                'ElementProvider/depthFirstElementProvider',
+                'ElementProvider/elementProvider',
+                'comparable', 
+                'disposable', 
+                'eventCollector',
+                'eventId',
+                'evtEvent',
+                'evtHtmlElement',
+                'serializable',
+                'treeStructure',
+                'volumeStream'
+              ]
             }
-          ]
+          ],
+          dir: 'out/optimized'
         }
       }
     },
     
     // Shell commands
     shell: {
-      compile: {
+      compileBrowser: {
         command: '<%= tsc %> --project src'
       },
       compileServer: {
         command: '<%= tsc %> --project src/server'
       },
-      compileAll: {
+      compile: {
         command: ''
       }
     },
@@ -49,31 +66,10 @@ module.exports = function(grunt) {
           { src: ['out/evt.js'], dest: 'examples/evt/' }
         ]
       },
-    },
-    
-    // Uglify
-    uglify: {
-      options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-      },
-      def: {
-        files: {
-          'out/<%= outName %>.min.js': ['out/<%= outName %>.js']
-        }
-      },
-      srv: {
-        files: {
-          'out/<%= outServerName %>.min.js': ['out/<%= outServerName %>.js']
-        }
-      },
-      all: {
-        files: {}
-      }
     }
   };
 
   // Configuration post-initialization
-  /*
   var utils = {
     acquire: function(dst, src) {
       for (var key in src) {
@@ -89,19 +85,12 @@ module.exports = function(grunt) {
   (function(copy) {
     copy.examples.all = copy.examples.def.files.concat(copy.examples.srv.files);
   })(config.copy);
-  
-  (function(uglify) {
-    utils.acquire(uglify.all.files, uglify.def.files);
-    utils.acquire(uglify.all.files, uglify.srv.files);
-  })(config.uglify);
-  */
 
   // Applying configuration
   grunt.initConfig(config);
 
   // Loading packages
   grunt.loadNpmTasks('grunt-contrib-requirejs');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-shell');
 
