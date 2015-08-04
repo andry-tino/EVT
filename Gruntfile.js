@@ -11,7 +11,7 @@ module.exports = function(grunt) {
     
     tsc: 'node node_modules/typescript/bin/tsc.js',
     
-    outName: '<%= pkg.name %>-bws-out',
+    outBrowserName: '<%= pkg.name %>-bws-out',
     outServerName: '<%= pkg.name %>-srv-out',
     
     // Require
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
               ]
             }
           ],
-          dir: 'out/optimized'
+          dir: 'out/_optimized'
         }
       }
     },
@@ -61,11 +61,21 @@ module.exports = function(grunt) {
     
     // Copy
     copy: {
-      examples: {
+      browserBundle: {
         files: [
-          { src: ['out/evt.js'], dest: 'examples/evt/' }
+          { src: ['out/_optimized/evt.js'], dest: 'out/<%= outBrowserName %>.js' }
         ]
       },
+      serverBundle: {
+        files: [
+          { src: [''], dest: '' }
+        ]
+      },
+      examples: {
+        files: [
+          { src: ['out/<%= outBrowserName %>.js'], dest: 'examples/evt/<%= outBrowserName %>.js' }
+        ]
+      }
     }
   };
 
@@ -79,12 +89,8 @@ module.exports = function(grunt) {
   };
   
   (function(shell) {
-    shell.compileAll.command = [shell.compile.command, shell.compileServer.command].join('&&');
+    shell.compile.command = [shell.compileBrowser.command, shell.compileServer.command].join('&&');
   })(config.shell);
-  
-  (function(copy) {
-    copy.examples.all = copy.examples.def.files.concat(copy.examples.srv.files);
-  })(config.copy);
 
   // Applying configuration
   grunt.initConfig(config);
@@ -95,11 +101,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-shell');
 
   // Tasks
-  grunt.registerTask('default', ['shell:compileAll', 'uglify:all']); // Not working
-  grunt.registerTask('build-def', ['shell:compile', 'requirejs']); // Not working
-  grunt.registerTask('build-def2', ['shell:compile']); // TBR
-  grunt.registerTask('build-srv', ['shell:compileServer', 'uglify:srv']); // Not working
-  //grunt.registerTask('build-examples', ['shell:compileAll', 'uglify:all', 'copy:examples:all']); // Not working
-  grunt.registerTask('build-examples', ['shell:compile', 'copy:examples']);
-  grunt.registerTask('aaa', ['copy:examples']); // TBR
+  {
+    var def = ['shell:compileBrowser', 'requirejs:browser', 'copy:browserBundle'];
+    var examples = def.concat(['copy:examples']);
+    
+    grunt.registerTask('default', def);
+    grunt.registerTask('examples', examples);
+  }
 };
