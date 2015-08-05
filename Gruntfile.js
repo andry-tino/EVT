@@ -79,6 +79,11 @@ module.exports = function(grunt) {
       }
     }
   };
+  
+  // Generating out HTML file
+  grunt.registerTask('generateHtml', function() {
+    
+  });
 
   // Configuration post-initialization
   var utils = {
