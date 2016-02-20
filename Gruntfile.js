@@ -73,8 +73,8 @@ module.exports = function(grunt) {
       },
       examples: {
         files: [
-          { src: ['out/<%= outBrowserName %>.js'], dest: 'examples/evt/<%= outBrowserName %>.js' },
-          { src: ['libs/require.js'], dest: 'examples/js/require.js' }
+          { src: ['out/<%= outBrowserName %>.js'], dest: 'examples/_evt/<%= outBrowserName %>.js' },
+          { src: ['libs/require.js'], dest: 'examples/_js/require.js' }
         ]
       }
     }
