@@ -1,0 +1,50 @@
+/**
+ * Copyright (c) 2015 Andrea Tino
+ * File: default.css
+ */
+
+body { 
+  margin: 0; 
+  padding: 0 
+}
+
+.main {
+  margin: 10px;
+}
+
+.title {
+  
+}
+
+/*******************************
+ * Boxes
+ */
+
+.box {
+  background-color: #ff9900;
+  width: 150px;
+  height: 150px;
+}
+
+.box div {
+  margin: 10px;
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+}
+
+.box > div {
+  background-color: #ff7700;
+}
+
+.box > div > div {
+  background-color: #ff5500;
+}
+
+.box > div > div > div {
+  background-color: #ff3300;
+}
+
+.box > div > div > div > div {
+  background-color: #ff1100;
+}
