@@ -38,47 +38,54 @@
 		<script type="text/javascript">
 			// Once HTML page loaded, run this
 			var requirejsPath = '../_js/require.js';
-			var evtPath = '../_evt/evt-bws-out.js';
+			//var evtPath = '../_evt/evt-bws-out';
+      var evtPath = '../../out/window';
 			
-			var createScriptTag = function(src, onload) {
+			var createScriptTag = function(src, dataAttr, onload) {
 				var script = document.createElement('script');
 				script.type = 'text/javascript';
 				script.src = src;
+        
+        if (dataAttr) {
+          for (var i = 0; i < dataAttr.length; i++) {
+            script.setAttribute(dataAttr[i].name, dataAttr[i].value);
+          }
+        }
+        
 				script.addEventListener('load', onload);
+        
 				return script;
 			};
 			
 			window.addEventListener('load', function(e) {
-				var requirejs = createScriptTag(requirejsPath, function(e) {
-					document.head.appendChild(createScriptTag(evtPath, function(e) {
-						// Once EVT is loaded, create content
-						var createBox = function() {
-							var container = document.createElement('div');
-							container.className = 'box';
-							for (var i = 0, c = container; i < 4; i++) {
-								var n = document.createElement('div');
-								c.appendChild(n);
-								c = n;
-							}
-							return container;
-						};
-						
-						var main = document.createElement('div');
-						var title = document.createElement('h1');
-						var box1 = createBox();
-						
-						main.className = 'main';
-						
-						title.textContent = 'Welcome to EVT Minimal example';
-						
-						main.appendChild(title);
-						main.appendChild(box1);
-						document.body.appendChild(main);
-						
-						// Start EVT
-						evt = new EVT.Evt(document.body);
-						evt.start();
-					}));
+				var requirejs = createScriptTag(requirejsPath, [{ name: 'data-main', value: evtPath }], function(e) {
+          // Once EVT is loaded, create content
+          var createBox = function() {
+            var container = document.createElement('div');
+            container.className = 'box';
+            for (var i = 0, c = container; i < 4; i++) {
+              var n = document.createElement('div');
+              c.appendChild(n);
+              c = n;
+            }
+            return container;
+          };
+          
+          var main = document.createElement('div');
+          var title = document.createElement('h1');
+          var box1 = createBox();
+          
+          main.className = 'main';
+          
+          title.textContent = 'Welcome to EVT Minimal example';
+          
+          main.appendChild(title);
+          main.appendChild(box1);
+          document.body.appendChild(main);
+          
+          // Start EVT
+          evt = new EVT.Evt(document.body);
+          evt.start();
 				});
 				document.head.appendChild(requirejs);
 			});
