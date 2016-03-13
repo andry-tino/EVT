@@ -11,45 +11,13 @@ module.exports = function(grunt) {
     
     tsc: 'node node_modules/typescript/bin/tsc.js',
     
-    outBrowserName: '<%= pkg.name %>-bws-out',
-    outServerName: '<%= pkg.name %>-srv-out',
-    
-    // Require
-    requirejs: {
-      browser: {
-        options: {
-          baseUrl: "out",
-          modules: [
-            {
-              name: 'evt',
-              include: [
-                'Data/elementInSituEventDataProvider',
-                'Data/eventBatch',
-                'Data/eventData',
-                'Data/eventDataProvider',
-                'ElementProvider/depthFirstElementProvider',
-                'ElementProvider/elementProvider',
-                'comparable', 
-                'disposable', 
-                'eventCollector',
-                'eventId',
-                'evtEvent',
-                'evtHtmlElement',
-                'serializable',
-                'treeStructure',
-                'volumeStream'
-              ]
-            }
-          ],
-          dir: 'out/_optimized'
-        }
-      }
-    },
-    
     // Shell commands
     shell: {
       compileBrowser: {
         command: '<%= tsc %> --project src'
+      },
+      compileExamples: {
+        command: '<%= tsc %> --project examples'
       },
       compileServer: {
         command: '<%= tsc %> --project src/server'
@@ -61,29 +29,8 @@ module.exports = function(grunt) {
     
     // Copy
     copy: {
-      browserBundle: {
-        files: [
-          { src: ['out/_optimized/evt.js'], dest: 'out/<%= outBrowserName %>.js' }
-        ]
-      },
-      serverBundle: {
-        files: [
-          { src: [''], dest: '' }
-        ]
-      },
-      examples: {
-        files: [
-          { src: ['out/<%= outBrowserName %>.js'], dest: 'examples/_evt/<%= outBrowserName %>.js' },
-          { src: ['libs/require.js'], dest: 'examples/_js/require.js' }
-        ]
-      }
     }
-  };
-  
-  // Generating out HTML file
-  grunt.registerTask('generateHtml', function() {
-    
-  });
+  }; // End of config
 
   // Configuration post-initialization
   var utils = {
@@ -108,10 +55,10 @@ module.exports = function(grunt) {
 
   // Tasks
   {
-    var def = ['shell:compileBrowser', 'requirejs:browser', 'copy:browserBundle'];
-    var examples = def.concat(['copy:examples']);
+    var def = ['shell:compileBrowser'];
+    var examples = ['shell:compileExamples'];
     
     grunt.registerTask('default', def);
     grunt.registerTask('examples', examples);
-  }
+  } // End of tasks
 };

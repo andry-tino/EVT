@@ -6,7 +6,7 @@
         "preserveConstEnums": true,
         "sourceMap": false,
         "module": "amd",
-        "outDir": "../out"
+        "outDir": "../out/evt"
     },
     "files": [
         "Data/elementInSituEventDataProvider.ts",

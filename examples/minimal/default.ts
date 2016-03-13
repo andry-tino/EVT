@@ -43,3 +43,7 @@ export module EVT.Examples.Minimal {
     }
   }
 }
+
+// Running
+var main = new EVT.Examples.Minimal.Default();
+main.run();
