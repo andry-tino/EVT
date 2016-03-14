@@ -45,7 +45,7 @@ export module EVT {
 		/** 
 		 * Gets or sets the procedure returning the event data provider.
 		 */
-		public eventDataProvider: (element: HTMLElement) => EventDataProvider;
+		public eventDataProviderProvider: (element: HTMLElement) => EventDataProvider;
 		
 		/**
 		 * Constructs a new instance of the Evt class.
@@ -109,7 +109,7 @@ export module EVT {
 			this.dataProviders = null;
 			
 			this.elementProvider = null;
-			this.eventDataProvider = null;
+			this.eventDataProviderProvider = null;
 			
 			if ((<any>this.collectedData).dispose) {
 				(<any>this.collectedData).dispose();
@@ -118,17 +118,20 @@ export module EVT {
 		}
 		
 		private initialize() {
-			// Providing default values
-			this.elementProvider = new DepthFirstElementProvider(this.root);
-			this.eventDataProvider = (element: HTMLElement) => new ElementInSituEventDataProvider(element);
-			
+			this.initializeProviders();
 			this.scanTree();
 		}
+    
+    // Providing default values
+    private initializeProviders() {
+      this.elementProvider = new DepthFirstElementProvider(this.root);
+			this.eventDataProviderProvider = (element: HTMLElement) => new ElementInSituEventDataProvider(element);
+    }
 		
 		private scanTree() {
 			while (!this.elementProvider.isLast) {
 				var element = this.elementProvider.element; // Iterating
-				this.dataProviders.push(this.eventDataProvider(element));
+				this.dataProviders.push(this.eventDataProviderProvider(element));
 			}
 		}
 		

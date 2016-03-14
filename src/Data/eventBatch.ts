@@ -10,6 +10,8 @@ import EventData = eventData.EVT.EventData;
 export module EVT {
 	/**
 	 * Class defining batch for events.
+   * A batch is defined as a complete set of information for an event which consists of 
+   * different events at the different phases they can occur accoridng to the DOM W3C specification.
 	 */
 	export class EventBatch {
 		private internalAtCapture: EventData;

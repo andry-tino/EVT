@@ -27,7 +27,6 @@
         "../src/serializable.ts",
         "../src/treeStructure.ts",
         "../src/volumeStream.ts",
-        "../src/window.ts",
         "minimal/default.ts"
     ]
 }

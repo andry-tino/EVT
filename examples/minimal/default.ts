@@ -27,7 +27,8 @@ export module EVT.Examples.Minimal {
       document.body.appendChild(main);
 
       // Start EVT
-      var evt = new Evt(document.body);
+      (<any>window)['evt'] = new Evt(document.body);
+      var evt = (<any>window)['evt'];
       evt.start();
     }
     

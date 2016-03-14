@@ -26,7 +26,6 @@
         "evtHtmlElement.ts",
         "serializable.ts",
         "treeStructure.ts",
-        "volumeStream.ts",
-        "window.ts"
+        "volumeStream.ts"
     ]
 }

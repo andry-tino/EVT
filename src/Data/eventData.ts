@@ -10,6 +10,7 @@ import EventId = eventId.EVT.EventId;
 export module EVT {
 	/**
 	 * Class defining data for events.
+   * This class logs all basic information regarding events.
 	 */
 	export class EventData {
 		private internalId: EventId;

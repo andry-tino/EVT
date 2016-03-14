@@ -21,7 +21,7 @@ import EvtEvent = evtEvent.EVT.EvtEvent;
 
 export module EVT {
 	/**
-	 * Class implementing a depth first element providing strategy.
+	 * Class implementing a strategy for getting data from an element.
 	 */
 	export class ElementInSituEventDataProvider implements EventDataProvider, Disposable {
 		private static evtElementAttributeName = "data-evt";
@@ -29,8 +29,9 @@ export module EVT {
 		private events = ["click"];
 		private element: EvtHTMLElement;
 		
+    // Core logic for tracking events as they traverse the element
 		private handler = (e: Event) => {
-			// Retrieving/initialiing the event id
+			// Retrieving/initializing the event id
 			var event: EvtEvent = <EvtEvent>e;
 			event.evtEventId = event.evtEventId || new EventId();
 			
@@ -169,6 +170,7 @@ export module EVT {
 				}
 			};
 			
+      // TODO: Improve by using dictionaries
 			for (var index in this.element.evtData) {
 				var item = this.element.evtData[index];
 				
