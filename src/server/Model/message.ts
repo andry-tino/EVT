@@ -3,7 +3,7 @@
  * File: message.ts
  */
 
-module EVT {
+export module EVT {
 	/**
 	 * Interface describing messages.
 	 */

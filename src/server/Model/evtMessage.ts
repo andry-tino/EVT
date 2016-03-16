@@ -3,9 +3,11 @@
  * File: evtMessage.ts
  */
 
-/// <reference path="message.ts"/>
+import message = require('message');
 
-module EVT {
+import Message = message.EVT.Message;
+
+export module EVT {
 	/**
 	 * Class describing EVT messages.
 	 */

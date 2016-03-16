@@ -1,13 +1,12 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
-        "target": "ES5",
+        "target": "es5",
         "noImplicitAny": true,
         "removeComments": false,
         "preserveConstEnums": true,
-        "out": "out/evt-srv-out.js",
-        "outDir": "../../out/js",
-        "sourceMap": false
+        "sourceMap": false,
+        "module": "amd",
+        "outDir": "../../out/server"
     },
     "files": [
         "Model/evtMessage.ts",
