@@ -56,6 +56,8 @@ module.exports = function(grunt) {
   // Tasks
   {
     var def = ['shell:compileBrowser'];
+    var browser = ['shell:compileBrowser'];
+    var server = ['shell:compileServer'];
     var examples = ['shell:compileExamples'];
     
     grunt.registerTask('default', def);
