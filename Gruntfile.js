@@ -62,5 +62,6 @@ module.exports = function(grunt) {
     
     grunt.registerTask('default', def);
     grunt.registerTask('examples', examples);
+    grunt.registerTask('server', server);
   } // End of tasks
 };
