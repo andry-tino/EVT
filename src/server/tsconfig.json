@@ -11,6 +11,7 @@
     "files": [
         "Model/evtMessage.ts",
         "Model/message.ts",
-        "evtServer.ts"
+        "evtServer.ts",
+        "main.ts"
     ]
 }

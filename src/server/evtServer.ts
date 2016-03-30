@@ -8,7 +8,7 @@
 
 import WebSocket = require('websocket');
 
-module EVT {
+export module EVT {
 	/**
 	 * Class implementing the EVT server.
 	 */

@@ -49,7 +49,6 @@ module.exports = function(grunt) {
   grunt.initConfig(config);
 
   // Loading packages
-  grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-shell');
 
