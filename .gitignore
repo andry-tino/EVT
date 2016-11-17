@@ -1,3 +1,4 @@
 out
 examples/_*
 *.log
+node_modules/**
