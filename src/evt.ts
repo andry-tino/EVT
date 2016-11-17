@@ -122,11 +122,11 @@ export module EVT {
 			this.scanTree();
 		}
     
-    // Providing default values
-    private initializeProviders() {
-      this.elementProvider = new DepthFirstElementProvider(this.root);
-			this.eventDataProviderProvider = (element: HTMLElement) => new ElementInSituEventDataProvider(element);
-    }
+		// Providing default values
+		private initializeProviders() {
+		this.elementProvider = new DepthFirstElementProvider(this.root);
+				this.eventDataProviderProvider = (element: HTMLElement) => new ElementInSituEventDataProvider(element);
+		}
 		
 		private scanTree() {
 			while (!this.elementProvider.isLast) {
