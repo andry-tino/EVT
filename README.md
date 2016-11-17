@@ -7,9 +7,8 @@ This section is in progress.
 # Building EVT
 You will need:
 
-- Grunt client - v1.2.0
-- Grunt - v0.4.5
-- Typescript compiler
+- [Grunt client](https://www.npmjs.com/package/grunt-cli) - v1.2.0
+- [Typescript](https://www.npmjs.com/package/typescript) - 2.0.0
 
 ## Remarks
-TODO
+This section is in progress.

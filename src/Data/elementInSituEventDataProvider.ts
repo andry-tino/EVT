@@ -140,10 +140,9 @@ export module EVT {
 		private search(id: EventId): EventBatch {
 			var batch = new EventBatch();
 			var batchComplete = (b: EventBatch): boolean => {
-				return 
-					(b.atCapture != null) &&	
-					(b.atBubble != null) && 
-					(b.atTarget != null);
+				return b.atCapture != null &&
+					   b.atBubble != null && 
+					   b.atTarget != null;
 			};
 			var insertInBatch = (x: EventData, b: EventBatch) => {
 				switch (x.eventPhase) {
