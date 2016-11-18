@@ -3,11 +3,9 @@
  * File: eventId.ts
  */
 
-import comparable = require('./comparable');
+/// <reference path="./comparable.ts"/>
 
-import Comparable = comparable.EVT.Comparable;
-
-export module EVT {
+namespace EVT {
 	/**
 	 * Class defining IDs for events.
 	 */

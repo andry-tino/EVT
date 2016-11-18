@@ -3,13 +3,10 @@
  * File: staticVolumeVisualizer.ts
  */
 
-import volumeStream = require('../volumeStream');
-import volumeVisualizer = require('./volumeVisualizer');
+/// <reference path="../volumeStream.ts"/>
+/// <reference path="./volumeVisualizer.ts"/>
 
-import VolumeStream = volumeStream.EVT.VolumeStream;
-import VolumeVisualizer = volumeVisualizer.EVT.VolumeVisualizer;
-
-export module EVT {
+namespace EVT {
 	/**
 	 * Class for static visualization.
 	 */

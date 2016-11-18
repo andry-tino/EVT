@@ -3,11 +3,9 @@
  * File: evtEvent.ts
  */
 
-import eventId = require('./eventId');
+/// <reference path="./eventId.ts"/>
 
-import EventId = eventId.EVT.EventId;
-
-export module EVT {
+namespace EVT {
 	/**
 	 * Interface defining data for events.
 	 */

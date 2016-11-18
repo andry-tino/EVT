@@ -3,25 +3,16 @@
  * File: evt.ts
  */
 
-import elementProvider = require('./ElementProvider/elementProvider');
-import depthFirstElementProvider = require('./ElementProvider/depthFirstElementProvider');
-import eventDataProvider = require('./Data/eventDataProvider');
-import elementInSituEventDataProvider = require('./Data/elementInSituEventDataProvider');
-import eventData = require('./Data/eventData');
-import eventCollector = require('./eventCollector');
-import disposable = require('./disposable');
-import evtHtmlElement = require('./evtHtmlElement');
+/// <reference path="./ElementProvider/elementProvider.ts"/>
+/// <reference path="./ElementProvider/depthFirstElementProvider.ts"/>
+/// <reference path="./Data/eventDataProvider.ts"/>
+/// <reference path="./Data/elementInSituEventDataProvider.ts"/>
+/// <reference path="./Data/eventData.ts"/>
+/// <reference path="./eventCollector.ts"/>
+/// <reference path="./disposable.ts"/>
+/// <reference path="./evtHtmlElement.ts"/>
 
-import ElementProvider = elementProvider.EVT.ElementProvider;
-import DepthFirstElementProvider = depthFirstElementProvider.EVT.DepthFirstElementProvider;
-import EventDataProvider = eventDataProvider.EVT.EventDataProvider;
-import ElementInSituEventDataProvider = elementInSituEventDataProvider.EVT.ElementInSituEventDataProvider;
-import EventData = eventData.EVT.EventData;
-import EventCollector = eventCollector.EVT.EventCollector;
-import Disposable = disposable.EVT.Disposable;
-import EvtHtmlElement = evtHtmlElement.EVT.EvtHTMLElement;
-
-export module EVT {
+namespace EVT {
 	/**
 	 * Class implementing all features by EVT and functrionalities
 	 * to track events and export collected results

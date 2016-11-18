@@ -5,8 +5,8 @@
         "removeComments": false,
         "preserveConstEnums": true,
         "sourceMap": false,
-        "module": "amd",
-        "outDir": "../out/evt"
+        "module": "system",
+        "outFile": "../out/evt.js"
     },
     "files": [
         "Data/elementInSituEventDataProvider.ts",

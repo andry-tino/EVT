@@ -3,11 +3,9 @@
  * File: eventData.ts
  */
 
-import eventId = require('../eventId');
+/// <reference path="../eventId.ts"/>
 
-import EventId = eventId.EVT.EventId;
-
-export module EVT {
+namespace EVT {
 	/**
 	 * Class defining data for events.
    * This class logs all basic information regarding events.

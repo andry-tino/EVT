@@ -3,7 +3,7 @@
  * File: evt.d.ts
  */
 
-declare module EVT {
+declare namespace EVT {
     export class Evt {
         /**
          * Constructs a new instance of the Evt class.

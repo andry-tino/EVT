@@ -3,13 +3,10 @@
  * File: volumeStream.ts
  */
 
-import serializable = require('./serializable');
-import treeStructure = require('./treeStructure');
+/// <reference path="./serializable.ts"/>
+/// <reference path="./treeStructure.ts"/>
 
-import Serializable = serializable.EVT.Serializable;
-import TreeStructure = treeStructure.EVT.TreeStructure;
-
-export module EVT {
+namespace EVT {
 	/**
 	 * An event point.
 	 */

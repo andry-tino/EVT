@@ -3,23 +3,15 @@
  * File: elementInSituEventDataProvider.ts
  */
 
-import eventDataProvider = require('./eventDataProvider');
-import eventData = require('./eventData');
-import eventBatch = require('./eventBatch');
-import disposable = require('../disposable');
-import evtHtmlElement = require('../evtHtmlElement');
-import eventId = require('../eventId');
-import evtEvent = require('../evtEvent');
+/// <reference path="./eventDataProvider.ts"/>
+/// <reference path="./eventData.ts"/>
+/// <reference path="./eventBatch.ts"/>
+/// <reference path="../disposable.ts"/>
+/// <reference path="../evtHtmlElement.ts"/>
+/// <reference path="../eventId.ts"/>
+/// <reference path="../evtEvent.ts"/>
 
-import EventDataProvider = eventDataProvider.EVT.EventDataProvider;
-import EventData = eventData.EVT.EventData;
-import EventBatch = eventBatch.EVT.EventBatch;
-import Disposable = disposable.EVT.Disposable;
-import EvtHTMLElement = evtHtmlElement.EVT.EvtHTMLElement;
-import EventId = eventId.EVT.EventId;
-import EvtEvent = evtEvent.EVT.EvtEvent;
-
-export module EVT {
+namespace EVT {
 	/**
 	 * Class implementing a strategy for getting data from an element.
 	 */
@@ -29,7 +21,7 @@ export module EVT {
 		private events = ["click"];
 		private element: EvtHTMLElement;
 		
-    // Core logic for tracking events as they traverse the element
+    	// Core logic for tracking events as they traverse the element
 		private handler = (e: Event) => {
 			// Retrieving/initializing the event id
 			var event: EvtEvent = <EvtEvent>e;
