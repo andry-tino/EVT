@@ -3,7 +3,7 @@
  * File: evt.d.ts
  */
 
-export module EVT {
+declare module EVT {
     export class Evt {
         /**
          * Constructs a new instance of the Evt class.
@@ -13,12 +13,12 @@ export module EVT {
         /**
          * Starts the system.
          */
-        start();
+        start(): void;
 
         /**
          * Stops the system.
          */
-        stop();
+        stop(): void;
 
         /**
          * Collects events.
@@ -33,6 +33,6 @@ export module EVT {
         /**
          * Disposes the system.
          */
-        dispose();
+        dispose(): void;
     }
 }

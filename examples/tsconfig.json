@@ -5,28 +5,10 @@
         "removeComments": false,
         "preserveConstEnums": true,
         "sourceMap": false,
-        "module": "amd",
-        "outDir": "./_evt"
+        "module": "es6",
+        "outFile": "./_evt/evt.js"
     },
     "files": [
-        "../src/Data/elementInSituEventDataProvider.ts",
-        "../src/Data/eventBatch.ts",
-        "../src/Data/eventData.ts",
-        "../src/Data/eventDataProvider.ts",
-        "../src/ElementProvider/depthFirstElementProvider.ts",
-        "../src/ElementProvider/elementProvider.ts",
-        "../src/Visualizer/staticVolumeVisualizer.ts",
-        "../src/Visualizer/volumeVisualizer.ts",
-        "../src/comparable.ts",
-        "../src/disposable.ts",
-        "../src/eventCollector.ts",
-        "../src/eventId.ts",
-        "../src/evt.ts",
-        "../src/evtEvent.ts",
-        "../src/evtHtmlElement.ts",
-        "../src/serializable.ts",
-        "../src/treeStructure.ts",
-        "../src/volumeStream.ts",
         "minimal/default.ts"
     ]
 }

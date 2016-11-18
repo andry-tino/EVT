@@ -125,7 +125,7 @@ export module EVT {
 		// Providing default values
 		private initializeProviders() {
 		this.elementProvider = new DepthFirstElementProvider(this.root);
-				this.eventDataProviderProvider = (element: HTMLElement) => new ElementInSituEventDataProvider(element);
+			this.eventDataProviderProvider = (element: HTMLElement) => new ElementInSituEventDataProvider(element);
 		}
 		
 		private scanTree() {

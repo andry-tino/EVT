@@ -3,40 +3,37 @@
  * File: default.ts
  */
 
-import evt = require('../../src/evt');
-
-import Evt = evt.EVT.Evt;
+/// <reference path="../../src/evt.d.ts"/>
 
 export module EVT.Examples.Minimal {
   export class Default {
-    
     /**
      * Runs the example.
      */
     public run() {
-      var main = document.createElement('div');
-      var title = document.createElement('h1');
+      var main = document.createElement("div");
+      var title = document.createElement("h1");
       var box1 = this.createBox();
 
-      main.className = 'main';
+      main.className = "main";
 
-      title.textContent = 'Welcome to EVT Minimal example';
+      title.textContent = "Welcome to EVT Minimal example";
 
       main.appendChild(title);
       main.appendChild(box1);
       document.body.appendChild(main);
 
       // Start EVT
-      (<any>window)['evt'] = new Evt(document.body);
-      var evt = (<any>window)['evt'];
+      (<any>window)["evt"] = new EVT.Evt(document.body);
+      var evt = (<any>window)["evt"];
       evt.start();
     }
     
     private createBox() : HTMLElement {
-      var container = document.createElement('div');
-      container.className = 'box';
+      var container = document.createElement("div");
+      container.className = "box";
       for (var i = 0, c = container; i < 4; i++) {
-        var n = document.createElement('div');
+        var n = document.createElement("div");
         c.appendChild(n);
         c = n;
       }
