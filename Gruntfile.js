@@ -25,8 +25,13 @@ module.exports = function(grunt) {
       compile: {
         command: ""
       }
+    },
+
+    // Clean
+    clean: {
+      out: ["out/*"]
     }
-  }; // End of config
+  }; 
   
   (function(shell) {
     shell.compile.command = [shell.compileBrowser.command, shell.compileServer.command].join("&&");
@@ -37,12 +42,13 @@ module.exports = function(grunt) {
 
   // Loading packages
   grunt.loadNpmTasks("grunt-contrib-copy");
+  grunt.loadNpmTasks("grunt-contrib-clean");
   grunt.loadNpmTasks("grunt-shell");
 
   // Tasks
   {
-    var def       = ["shell:compileBrowser"];
-    var browser   = ["shell:compileBrowser"];
+    var def       = ["clean:out", "shell:compileBrowser"];
+    var browser   = ["clean:out", "shell:compileBrowser"];
     var server    = ["shell:compileServer"];
     var examples  = ["shell:compileExamples"];
     
