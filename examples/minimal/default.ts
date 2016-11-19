@@ -5,7 +5,7 @@
 
 /// <reference path="../../src/evt.d.ts"/>
 
-export module EVT.Examples.Minimal {
+namespace EVT.Examples.Minimal {
   export class Default {
     /**
      * Runs the example.
@@ -24,7 +24,7 @@ export module EVT.Examples.Minimal {
       document.body.appendChild(main);
 
       // Start EVT
-      (<any>window)["evt"] = new EVT.Evt(document.body);
+      (<any>window)["evt"] = new Evt(document.body);
       var evt = (<any>window)["evt"];
       evt.start();
     }
@@ -41,7 +41,3 @@ export module EVT.Examples.Minimal {
     }
   }
 }
-
-// Running
-var main = new EVT.Examples.Minimal.Default();
-main.run();

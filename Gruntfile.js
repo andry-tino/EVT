@@ -29,7 +29,8 @@ module.exports = function(grunt) {
 
     // Clean
     clean: {
-      out: ["out/*"]
+      out: ["out/*"],
+      examples: ["examples/_*"]
     }
   }; 
   
@@ -50,7 +51,7 @@ module.exports = function(grunt) {
     var def       = ["clean:out", "shell:compileBrowser"];
     var browser   = ["clean:out", "shell:compileBrowser"];
     var server    = ["shell:compileServer"];
-    var examples  = ["shell:compileExamples"];
+    var examples  = ["clean:out", "clean:examples", "shell:compileBrowser", "shell:compileExamples"];
     
     grunt.registerTask("default",   def);
     grunt.registerTask("examples",  examples);

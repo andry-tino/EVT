@@ -4,7 +4,17 @@
 		<meta charset="UTF-8">
 		<title>EVT Example - Minimal</title>
 		<link href="default.css" rel="stylesheet" title="Default Style">
-    <script data-main="../_evt/examples/minimal/default" src="../../libs/require.js"></script>
+   		
+		<script src="../../out/evt.js"></script>
+		<script src="../_evt/evt-examples.js"></script>
 	</head>
-	<body></body>
+	<body>
+		<script type="text/javascript">
+			// Running
+			window.addEventListener("load", function() {
+				var main = new EVT.Examples.Minimal.Default();
+				main.run();
+			});
+		</script>
+	</body>
 </html>

@@ -5,10 +5,11 @@
         "removeComments": false,
         "preserveConstEnums": true,
         "sourceMap": false,
-        "module": "es6",
-        "outFile": "./_evt/evt.js"
+        "module": "system",
+        "outFile": "./_evt/evt-examples.js"
     },
     "files": [
+        "../src/evt.d.ts",
         "minimal/default.ts"
     ]
 }
