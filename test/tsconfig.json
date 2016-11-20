@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "noImplicitAny": true,
+        "removeComments": false,
+        "preserveConstEnums": true,
+        "sourceMap": false,
+        "module": "commonjs",
+        "outDirectory": "../out/evt-tests"
+    },
+    "files": [
+        "visualizerUnitTests/lineDiagramVolumeVisualizerUnitTest.ts"
+    ]
+}
