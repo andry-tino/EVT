@@ -1,4 +1,7 @@
 # EVT
+
+[![Build Status](https://travis-ci.org/andry-tino/EVT.svg?branch=master)](https://travis-ci.org/andry-tino/EVT)
+
 Event Volume Tracker allows web developers to (visually) track events occurring in web applications.
 
 # About
